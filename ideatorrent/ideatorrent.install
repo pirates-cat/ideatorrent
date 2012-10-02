@@ -1,0 +1,1196 @@
+<?php
+
+/*
+Copyright (C) 2007-2008 Nicolas Deschildre <ndeschildre@gmail.com>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+require_once "ideatorrent.function.php";
+
+function ideatorrent_install() {
+    $prefix="qapoll";
+    switch ($GLOBALS['db_type']) {
+	case 'pgsql':
+
+		/**
+		 * A "poll" is a aggregation of choices. A survey is maybe a better word.
+		 * Several polls can be attached to one website (qawebsite_site).
+		 * status: enum[?]
+		 */
+		it_query("CREATE TABLE {".$prefix."_poll} (
+				id serial,
+				siteid integer NOT NULL,
+				title character varying NOT NULL,
+				description character varying NOT NULL,
+				startdate timestamp without time zone NOT NULL,
+				enddate timestamp without time zone NOT NULL,
+				userid integer NOT NULL,
+				date timestamp without time zone NOT NULL,
+				status integer NOT NULL,
+				PRIMARY KEY (id)
+    	    			)");
+
+
+		/**
+		 * By default, we are not able to access the module. We should first add an entry point.
+		 * The basic one is (poll_id, "all", your_title, your_description, null), which will create 
+		 * an entry point at the URL : http://xxx/qapoll/all/.
+		 * You can add other entry point, with a filter (in POST form). See ChoiceListModel::setFilterParameters().
+		 * custom_base_url: If we want to use a base URL other that the default one 
+		 * for the entry point (e.g. http://mydomain.com/ instead of http://otherdomain.com/qapoll/url_name/), specify it here
+		 * Of course don't forget to update your .htaccess.
+		 * The "real" primary key here is (pollid, url_name).
+		 */
+		it_query("CREATE TABLE {".$prefix."_entry_point} (
+				id serial NOT NULL,
+				pollid int4 NOT NULL,
+				url_name varchar NOT NULL,
+				title varchar NOT NULL,
+				description varchar NOT NULL,
+				filter varchar,
+				custom_base_url varchar,
+				CONSTRAINT qapoll_entry_point_pkey PRIMARY KEY (id)
+				)");
+
+
+
+		/**
+		 * A "choice" is basically an entry inside a "poll". "choices" are submitted by users and
+		 * can be voted. We can add bug/spec/forum reference to a "choice". It can be commented by users.
+		 * The hypemetric is what the module use to order the "choice". Currently we use a simple one : number of votes,
+		 * 	but we will probably need to review that later. (e.g. ponderation of votes by their age)
+		 * totalvotes will always keep the total number of votes, including the dup votes.
+		 * ideavotes will always keep the total number of votes, of this idea only.
+		 * The whiteboard is for admins and is to be displayed on the "choice" individual page before the comments.
+		 * choicetype: enum[ 0:bug, 1:idea ]
+		 * category: enum[ to be defined ]
+		 * status: enum[ -2:deleted -1:get_status_from_LP 0:New 1:Need_work/infos 2:Work_in_progress 3:Done 
+		 *  4:Won't_implement (previously inapplicable) 5:already implemented 6:Blueprint approved 7:Is a bug 8:Awaiting moderation]
+		 * last_status_change: The date/time when the last status change occured.
+		 * commentscount : The count of the comments of this choice.
+		 * release_target: Link this choice to a target name. Depending of the current status, this can have different meaning.
+		 * 	e.g. if implemented, this is the release where it is implemented. If in dev, it is the target release.
+		 * last_comment_date: The date of the last comment.
+		 * relation_id: This choice is related to the relation number relation_id.
+		 * relation_subcategory_id: This choice is in the category number relation_subcategory_id, which is a category of relation_id.
+		 * total_approval_votes: The number of approval votes this idea has, if it has to be approved before going to the main idea listings.
+		 * last_edit_date: The latest date the idea was edited.
+		 * searchable_index_col: Contains the tsvector used by postgresql to do some text (title + description) parsing for efficient text search.
+		 * totalsearchable_index_col tsvector: Likewise, but contains the parsing of all the attached solutions.
+		 * solutionssearchable_index_col tsvector: Likewise, contains the sum of the two previous field.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice} (
+				id serial,
+				pollid integer NOT NULL,
+				userid integer NOT NULL,
+				date timestamp without time zone NOT NULL,
+				title varchar(100) NOT NULL,
+				description text,
+				choicetype smallint NOT NULL,
+				categoryid smallint DEFAULT -1,
+				hypemetric int DEFAULT 0,
+				bugid integer,
+				specid varchar(100),
+				forumid integer,
+				status smallint NOT NULL DEFAULT -1,
+				duplicatenumber integer DEFAULT -1,
+				whiteboard text,
+				totalvotes int4 DEFAULT 0,
+				ideavotes int4 DEFAULT 0,
+				commentscount int4 DEFAULT 0,
+				last_status_change timestamp,
+				release_target int4 NOT NULL DEFAULT -1,
+				last_comment_date timestamp,
+				relation_id integer DEFAULT -1,
+				relation_subcategory_id integer DEFAULT -1,
+				totalapprovalvotes integer NOT NULL DEFAULT 0,
+				last_edit_date timestamp without time zone,
+				searchable_index_col tsvector,
+				totalsearchable_index_col tsvector,
+				solutionssearchable_index_col tsvector,
+				PRIMARY KEY (id)
+    				)");
+
+		/**
+		 * A choice solution is a user-proposed solution to a given "choice" which now contains a rationale 
+		 * (or problem this idea try to solve).
+		 * duplicate_choice_solution_id: If this is a duplicate of another solution, contains its id
+		 * solution_votes: The sum of the vote values of this solution
+		 * total_votes: The sum of the votes values of this solution plus its duplicates
+		 * total_[plus|equal|minus]_votes: The number of the different votes values of this solution plus its duplicates.
+		 * status: enum[ -2:deleted 1:New ]
+		 * searchable_index_col: Contains the tsvector used by postgresql to do some text (title + description) parsing for efficient text search.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_solution} (
+				id serial, 
+				duplicate_choice_solution_id integer NOT NULL DEFAULT -1, 
+				title text, 
+				userid integer, 
+				date timestamp without time zone NOT NULL, 
+				last_edit_date timestamp without time zone, 
+				description text, 
+				solution_votes integer DEFAULT 0, 
+				solution_plus_votes integer DEFAULT 0,
+				solution_equal_votes integer DEFAULT 0,
+				solution_minus_votes integer DEFAULT 0,
+				total_votes integer DEFAULT 0, 
+				total_plus_votes integer DEFAULT 0, 
+				total_equal_votes integer DEFAULT 0, 
+				total_minus_votes integer DEFAULT 0, 
+				status integer NOT NULL DEFAULT 1, 
+				searchable_index_col tsvector,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * The choice-solution link is a N-N type, so this tables contains the links.
+		 * advertize: Should we advertize this link? (E.g. no need to advertize in a solution a link to a duplicate idea)
+		 * solution_number: To keep a solution number consistent in a idea page, store it definitively here.
+		 * status: enum[ -2:deleted 1:New ]
+		 * selected: An solution can be selected over others when an idea is marked as in development, or implemented.
+		 * userid: The user who inserted this link.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_solution_link} (
+				id serial, 
+				choiceid integer NOT NULL, 
+				choicesolutionid integer NOT NULL, 
+				advertize integer DEFAULT 1, 
+				solution_number integer DEFAULT 1, 
+				status integer DEFAULT 1, 
+				selected smallint_unsigned DEFAULT 0,
+				userid integer,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * A "choice" comment.
+		 * status: enum [ -1:deleted 0:published ]
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_comment} (
+				id serial,
+				status smallint NOT NULL DEFAULT 0,
+				choiceid integer NOT NULL,
+				userid integer NOT NULL,
+				date timestamp without time zone NOT NULL,
+				comment text NOT NULL,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * Users can report a duplicate. They will be stored here, before being looked at by an admin.
+		 * duplicateid is the "choice" the user want to mark as duplicate.
+		 * status: enum [ 0:active 1:accepted 2:rejected ]
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_duplicate_report} (
+				id serial,
+				status smallint NOT NULL DEFAULT 0,
+				choiceid integer NOT NULL,
+				duplicateid integer NOT NULL,
+				submitterid int4 NOT NULL,
+				date timestamp without time zone NOT NULL,
+				moderatorid int4,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * A "poll" category. To each "poll" is associated several categories.
+		 * Each "choice" inside a given "poll" can be then associated to one of the poll's categories.
+		 * url_name is a URL-safe name for the category.
+		 */
+		it_query("CREATE TABLE {".$prefix."_poll_category} (
+				id serial,
+				pollid integer NOT NULL,
+				name varchar(100) NOT NULL,
+				description text NOT NULL,
+				ordering int4 DEFAULT 0,
+				url_name character varying(100),
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * A vote is associated to one solution of one "choice"(rationale/problem), and one user. It represents the user vote value to
+		 * this "choice"'s solution.
+		 */
+		it_query("CREATE TABLE {".$prefix."_vote} (
+				id serial,
+				choicesolutionid integer NOT NULL,
+				userid integer NOT NULL,
+				date timestamp without time zone NOT NULL,
+				value integer NOT NULL,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * A entry point menu is a menu associated to a given entry point (defined by (pollid,url_name).
+		 * A menu is a aggregation of menu_entries. menu_name is a internal name used by the website e.g. to
+		 * find the user menu. The menu title, optional, is shown on top of the menu.
+		 * A menu is not always shown on all pages: It is shown if the url matches the pattern url_pattern.
+		 * status: enum [ -1:hidden 0:shown ]
+		 * user_function: If existing, the function will be called, and the data this function will return will
+		 * be used to fill a menu.
+		 */
+		it_query("CREATE TABLE {".$prefix."_entry_point_menu} (
+				id serial NOT NULL,
+				menu_name varchar NOT NULL,
+				ordering int2 NOT NULL,
+				url_pattern varchar,
+				menu_title varchar,
+				status int2 NOT NULL DEFAULT 0,
+				entry_point_id int4 NOT NULL,
+				user_function varchar,
+				CONSTRAINT qapoll_entry_point_menu_pkey PRIMARY KEY (id)
+				) ");
+
+		/**
+		 * A menu entry is part of a menu defined above. It can be defined by/for a given user if user_id != -1.
+		 * status: enum [ -1:hidden 0:shown ]
+		 * permission_needed: contains the permission that is necessary to have to display the menu entry.
+		 * If is_suffix is true, the url will be happened at the end of the module URL.
+		 */
+		it_query("CREATE TABLE {".$prefix."_entry_point_menu_entry} (
+				id serial NOT NULL,
+				name varchar NOT NULL,
+				url varchar,
+				is_suffix bool NOT NULL DEFAULT true,
+				menu_id int4 NOT NULL,
+				user_id int4,
+				status int2 DEFAULT 0,
+				ordering int2 DEFAULT 0,
+				permission_needed TEXT,
+				CONSTRAINT qapoll_entry_point_menu_entry_pkey PRIMARY KEY (id)
+				) ");
+
+		/**
+		 * An image link entry contains a path (relative to qapoll/views/imagelink/tmpl/) to a PHP image,
+		 * the size of the image and the entry point id the image belongs to.
+		 * need_update: Indicates if the image should be regularly recomputed, because of evolving elements inside.
+		 * e.g. number of votes.
+		 */
+		it_query("CREATE TABLE {".$prefix."_image_link} (
+				id serial,
+				entry_point_id int4 NOT NULL,
+				img_url varchar NOT NULL,
+				img_height int4 NOT NULL,
+				img_width int4 NOT NULL,
+				status int2 NOT NULL DEFAULT 0,
+				title varchar,
+				need_update bool DEFAULT false,
+				CONSTRAINT qapoll_image_links_pkey PRIMARY KEY (id)
+				) ");
+
+		/**
+		 * This table will contains log data. Ideally all events & actions should be logged here.
+		 * The table is intentionally minimal so that it is easily extensible via derived SQL tables.
+		 * Note: All the items older than 1 week are deleted. DO NOT USE IT for permanent logging.
+		 * Current types: 1: User submitted an item. 2: User viewed a page (full page view) 3: User sent a private message.
+		 */
+		it_query("CREATE TABLE {".$prefix."_log} (
+				id serial,
+				date timestamp NOT NULL,
+				userid int4,
+				type int4 NOT NULL,
+				choice_id int4,
+				CONSTRAINT qapoll_log_pkey PRIMARY KEY (id)
+				) ");
+
+		/**
+		 * This table contains permanent log about choice changes.
+		 * change: 1:title 2:description 3:status 4:category 5:relation 6:relation-subcat 7:target-release 8:duplicate_number
+		 *  9:tags 10:admintags 11:Solution_linked 12:Solution unlinked 13:comment added 14:comment deleted
+		 * choicesolutionlinkid: If a change is about a solution, store the link so that we know which solution it is about.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_log} (
+				id serial, 
+				choiceid integer, 
+				choicesolutionlinkid integer DEFAULT -1,
+				userid integer, 
+				date timestamp without time zone, 
+				change integer, 
+				old_value text, 
+				old_value2 text,
+				new_value text, 
+				new_value2 text, 
+				CONSTRAINT qapoll_choice_log_pkey PRIMARY KEY (id)
+				)");
+
+		/**
+		 * This table will store some stats infos over time.
+		 */
+		it_query("CREATE TABLE {".$prefix."_stats} (
+				id serial, 
+				date timestamp, 
+				nbusers int4 NOT NULL, 
+				nbcomments int4 NOT NULL, 
+				nbvotes int4 NOT NULL, 
+				nbvotesplus int4 NOT NULL, 
+				nbvotesminus int4 NOT NULL, 
+				nbideas int4 NOT NULL, 
+				nbideasdeleted int4 NOT NULL, 
+				nbideasduplicate int4 NOT NULL, 
+				nbideasvalid int4 NOT NULL, 
+				nbideasvalid_new int4 NOT NULL, 
+				nbideasvalid_needinfos int4 NOT NULL, 
+				nbideasvalid_workinprogress int4 NOT NULL, 
+				nbideasvalid_done int4 NOT NULL, 
+				nbideasvalid_unapplicable int4 NOT NULL, 
+				nbideasvalid_already_implemented int4 NOT NULL,
+				nbideasvalid_blueprint_approved int4 NOT NULL,
+				nbdupreports int4 NOT NULL,
+				CONSTRAINT qapoll_stats_pkey PRIMARY KEY (id)
+				) ");
+
+
+		/**
+		 * This table contains the name of differents Ubuntu releases.
+		 * old_release: Do we consider it a old release? Can be used for e.g. menus : we won't show implemented ideas of old releases.
+		 */
+		it_query("CREATE TABLE {".$prefix."_release} (
+				id serial, 
+				ordering int4 NOT NULL DEFAULT 0, 
+				small_name varchar, 
+				long_name varchar, 
+				old_release bool NOT NULL DEFAULT false,
+				PRIMARY KEY (id)
+				) ");
+
+		/**
+		 * This table contains the user bookmarks.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_bookmark} (
+				id serial, 
+				userid integer NOT NULL, 
+				choiceid integer NOT NULL, 
+				date timestamp without time zone NOT NULL,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * This table contains the differents kind of relations the user will be able to choose for its idea.
+		 */
+		it_query("CREATE TABLE {".$prefix."_poll_relation_category} (
+				id serial,
+				pollid integer NOT NULL,
+				name varchar(100) NOT NULL,
+				ordering int4 DEFAULT 0,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * When creating an idea, the user can mark it as related to something. This can be a project, or a website,...
+		 * e.g. my idea is related to Firefox. Or my idea is related to ubuntuforums.org.
+		 * url_name is the name of the relation, with valid characters for an URL.
+		 */
+		it_query("CREATE TABLE {".$prefix."_poll_relation} (
+				id serial,
+				relation_category_id integer NOT NULL,
+				name varchar(100) NOT NULL,
+				url_name varchar(100) NOT NULL,
+				description varchar(500),
+				ordering int4 DEFAULT 0,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * We can tag choices, yeah!
+		 * A tag is tied to a choice and the user id who created it.
+		 * Admin: 0: everybody can edit it. 1: Only admin can edit.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_tag} (
+				id serial, 
+				name character varying(50) NOT NULL, 
+				choice_id integer NOT NULL, 
+				user_id integer, 
+				admin integer DEFAULT 0, 
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * Oh hai!
+		 * A very simple, yet very powerful table. Contains the permissions that will be proposed through the
+		 * Drupal permissions/roles interface.
+		 * name: The name of the permission.
+		 * permissions: A serialized array of permissions, organized as follow:
+		 *  array(
+		 *	"global" => array("perm_name1" => "perm_value", ...),
+		 *	"subsystem_name" => array(
+		 *		"filtered_perms" => array(
+		 *			"filter_1" => array("perm_name1" => "perm_value", ...),
+		 *			"filter_2" => array("perm_name1" => "perm_value", ...), ...),
+		 *		"owner_perms" => array(
+		 *			"perm_name1" => "perm_value",
+		 *			"perm_name2" => "perm_value", ...),
+		 *		"perm_name1" => "perm_value",
+		 *		"perm_name2" => "perm_value", ...),
+		 *	"subsystem_name2" => ...)
+		 *  where a "subsystem_name" can be a name of a model, such as "choice", "relation", ... (can be seen as a namespace)
+		 *  The permission name "all" is a shortcut for all permissions.
+		 *  "filtered_perms" and "owner_perms" are two special nodes in a subsystem array. The first one contains
+		 *  a list of perms associated to a filter specific to the subsystem, and the second one contains permissions
+		 *  that are provided only to the owner of the subsystem object.
+		 *  Global admin permissions can be defined as array("global" => array("all" => true)).
+		 * date: The date the permission was last edited.
+		 * description: Some user-supplied infos on this permission.
+		 * permission_level: Provides a kind of hierarchy on the permissions. A level=0 means a common
+		 * permission, like registered user, while higher level indicates e.g. an admin.
+		 * icon_name: The name of an icon that could be used to represent the permission graphically.
+		 * ordering: Important one. When fetching permissions for an user, some of the field may overlap
+		 * e.g. if a user a the admin and registered user role, we will have to choose a name field.
+		 * The policy is: when processing a permission, all its attributes overlaps the current ones.
+		 * So in the previous example, we will want to set the registered user perm before (e.g. ordering=0)
+		 * the admin role (e.g. ordering=9999).
+		 * display_name: The name to display to represent the permissions. E.g. "administrator", ...
+		 *
+		 * I can has cheezburger?
+		 */
+		it_query("CREATE TABLE {".$prefix."_permission} (
+				id serial, 
+				name text, 
+				permissions text, 
+				date timestamp without time zone, 
+				description text,
+				permission_level integer DEFAULT 0,
+				icon_name text,
+				ordering integer DEFAULT 0,
+				display_name text,
+				PRIMARY KEY (id)
+				);");
+
+		/**
+		 * This table contains categories like the ones in qapoll_poll_category, but these ones
+		 * are tied to a relation (qapoll_poll_relation).
+		 */
+		it_query("CREATE TABLE {".$prefix."_poll_relation_subcategory} (
+				id serial NOT NULL,
+				relationid integer NOT NULL,
+				name character varying(100) NOT NULL,
+				description text,
+				ordering integer,
+				url_name character varying(100),
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * This table contains the approval votes cast on ideas.
+		 */
+		it_query("CREATE TABLE {".$prefix."_choice_approval_vote} (
+				id serial, 
+				choiceid integer NOT NULL, 
+				userid integer NOT NULL, 
+				value integer NOT NULL, 
+				status smallint_unsigned NOT NULL DEFAULT 1, 
+				date timestamp without time zone NOT NULL, 
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * This table contains the grouped reports users submitted about content (offensive, already implemented,...)
+		 * itemid: The id of the concerned item.
+		 * report_type: enum 1:spam 2:offensive 3:in development 4:implemented 5:not an idea
+		 * item_type: enum 1:choice 2:solution 3:comment
+		 * status: enum 1:active -2:deleted(discarded) -3:deleted(processed)
+		 * votes: number of reports on this item
+		 * approver_id: The id of the user who processed this report.
+		 */
+		it_query("CREATE TABLE {".$prefix."_report} (
+				id serial, 
+				itemid integer, 
+				report_type integer, 
+				item_type integer, 
+				status integer NOT NULL DEFAULT 1, 
+				votes integer, 
+				approver_id integer, 
+				date timestamp without time zone,
+				PRIMARY KEY (id)
+				)");
+
+		/**
+		 * This table contains individual reports made by users. See the above table for field definition.
+		 */
+		it_query("CREATE TABLE {".$prefix."_report_vote} (
+				id serial, 
+				userid integer, 
+				itemid integer, 
+				item_type integer, 
+				report_type integer, 
+				votevalue integer DEFAULT 1, 
+				date timestamp without time zone,
+				PRIMARY KEY (id)
+				)");
+
+
+
+		/**
+		 * Now add some indexes to speed up things.
+		 */
+		it_query("CREATE INDEX ".$prefix."_vote_userid ON ".$prefix."_vote ( userid );");
+		it_query("CREATE INDEX ".$prefix."_choice_bookmark_userid ON ".$prefix."_choice_bookmark ( userid );");
+		it_query("CREATE INDEX ".$prefix."_choice_totalvotes ON ".$prefix."_choice ( totalvotes );");
+		it_query("CREATE INDEX ".$prefix."_choice_date ON ".$prefix."_choice ( date );");
+		it_query("CREATE INDEX ".$prefix."_choice_duplicatenumber ON ".$prefix."_choice ( duplicatenumber );");
+		it_query("CREATE INDEX ".$prefix."_choice_comment_choiceid ON ".$prefix."_choice_comment ( choiceid );");
+		it_query("CREATE INDEX ".$prefix."_choice_tag_choice_id ON ".$prefix."_choice_tag ( choice_id );");
+		it_query("CREATE INDEX ".$prefix."_choice_solution_link_choiceid ON ".$prefix."_choice_solution_link ( choiceid );");
+		it_query("CREATE INDEX ".$prefix."_choice_solution_link_choicesolutionid ON ".$prefix."_choice_solution_link ( choicesolutionid );");
+		it_query("CREATE INDEX ".$prefix."_choice_textsearch_idx ON qapoll_choice USING gin(totalsearchable_index_col);");
+
+
+		/**
+		 * Now add some plpgsql functions.
+		 */
+		it_query("CREATE LANGUAGE plpgsql;");
+		it_query("CREATE OR REPLACE FUNCTION qapoll_compute_number_of_votes(integer, integer) RETURNS integer[3] AS \$\$
+				DECLARE
+					choice RECORD;
+					choiceresult integer[3];
+					result integer[3];
+				BEGIN
+					-- Avoid recursive loop
+					IF $2 > 10 THEN
+						RETURN '{0, 0, 0}';
+					END IF;
+
+					SELECT 
+						'{' || (SELECT COUNT(*) FROM qapoll_vote WHERE choicesolutionid=$1 AND VALUE='1') || ', ' ||
+						(SELECT COUNT(*) FROM qapoll_vote WHERE choicesolutionid=$1 AND VALUE='0') || ', ' ||
+						(SELECT COUNT(*) FROM qapoll_vote WHERE choicesolutionid=$1 AND VALUE='-1') || '}'
+					INTO result;
+
+					FOR choice IN SELECT id FROM qapoll_choice WHERE duplicatenumber = $1
+					LOOP
+						SELECT qapoll_compute_number_of_votes(choice.id, $2+1) INTO choiceresult;
+						result[1] := result[1] + choiceresult[1];
+						result[2] := result[2] + choiceresult[2];
+						result[3] := result[3] + choiceresult[3];
+					END LOOP;
+
+					RETURN result;
+				END;
+				\$\$ LANGUAGE plpgsql;
+
+
+				--
+				-- Function and trigger to maintain the sums of votes
+				-- Used as a trigger in qapoll_vote
+				--
+				CREATE OR REPLACE FUNCTION qapoll_maintain_votes_sums() RETURNS TRIGGER AS \$qapoll_maintain_votes_sums\$
+				    DECLARE
+					  delta_vote          	integer;
+					delta_vote_plus		integer;
+					delta_vote_equal	integer;
+					delta_vote_minus	integer;
+					  affected_choicesolution	integer;
+					choice RECORD;
+				    BEGIN
+					delta_vote_minus = 0;
+					delta_vote_equal = 0;
+					delta_vote_plus = 0;
+
+					  -- Work out the increment/decrement amount(s).
+					  IF (TG_OP = 'DELETE') THEN
+
+						delta_vote = -1 * OLD.value;
+						affected_choicesolution = OLD.choicesolutionid;
+						IF(OLD.value = -1) THEN
+							delta_vote_minus = -1;
+						ELSIF(OLD.value = 0) THEN
+							delta_vote_equal = -1;
+						ELSIF(OLD.value = 1) THEN
+							delta_vote_plus = -1;
+						END IF;
+
+
+					  ELSIF (TG_OP = 'UPDATE') THEN
+
+						delta_vote = NEW.value - OLD.value;
+						affected_choicesolution = OLD.choicesolutionid;
+
+						IF(OLD.value = -1) THEN
+							delta_vote_minus = -1;
+						ELSIF(OLD.value = 0) THEN
+							delta_vote_equal = -1;
+						ELSIF(OLD.value = 1) THEN
+							delta_vote_plus = -1;
+						END IF;
+
+						IF(NEW.value = -1) THEN
+							delta_vote_minus = delta_vote_minus + 1;
+						ELSIF(NEW.value = 0) THEN
+							delta_vote_equal = delta_vote_equal + 1;
+						ELSIF(NEW.value = 1) THEN
+							delta_vote_plus = delta_vote_plus + 1;
+						END IF;
+
+					  ELSIF (TG_OP = 'INSERT') THEN
+
+						delta_vote = NEW.value;
+						affected_choicesolution = NEW.choicesolutionid;
+
+						IF(NEW.value = -1) THEN
+							delta_vote_minus = 1;
+						ELSIF(NEW.value = 0) THEN
+							delta_vote_equal = 1;
+						ELSIF(NEW.value = 1) THEN
+							delta_vote_plus = 1;
+						END IF;
+
+					  END IF;
+		
+					UPDATE qapoll_choice_solution
+						SET solution_votes = solution_votes + delta_vote,
+							solution_plus_votes = solution_plus_votes + delta_vote_plus,
+							solution_equal_votes = solution_equal_votes + delta_vote_equal,
+							solution_minus_votes = solution_minus_votes + delta_vote_minus,
+							total_votes = total_votes + delta_vote,
+							total_plus_votes = total_plus_votes + delta_vote_plus,
+							total_equal_votes = total_equal_votes + delta_vote_equal,
+							total_minus_votes = total_minus_votes + delta_vote_minus
+						WHERE id = affected_choicesolution;
+
+
+					-- Update the totalvotes field of the affected ideas. It reflects the max sum of votes of its solutions.
+					FOR choice IN SELECT DISTINCT choiceid FROM qapoll_choice_solution_link
+						WHERE choicesolutionid = affected_choicesolution
+					LOOP
+						EXECUTE 'UPDATE qapoll_choice SET totalvotes = (SELECT COALESCE(MAX(qapoll_choice_solution.total_votes), 0)  
+								FROM qapoll_choice_solution
+								JOIN qapoll_choice_solution_link  ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+								WHERE qapoll_choice_solution_link.choiceid = ' || choice.choiceid || ' AND 
+								qapoll_choice_solution.status = 1 AND 
+								qapoll_choice_solution_link.status = 1 AND 
+								qapoll_choice_solution_link.advertize = 1)  
+							WHERE id=' || choice.choiceid;
+
+					END LOOP;
+
+					  RETURN NULL;
+
+				    END;
+				\$qapoll_maintain_votes_sums\$ LANGUAGE plpgsql;
+
+
+				--
+				-- Function and trigger to maintain the sums of votes
+				-- Used as a trigger in the qapoll_choice_solution table
+				-- Affected field: qapoll_choice_solution total_[plus|equal|minus]+_votes, qapoll_choice totalvotes
+				--
+				CREATE OR REPLACE FUNCTION qapoll_maintain_votes_sums_2() RETURNS TRIGGER AS \$qapoll_maintain_votes_sums_2\$
+				    DECLARE
+				    	choice RECORD;
+					affected_solution integer;
+				    BEGIN
+
+					  -- Work out the increment/decrement amount(s).
+					  IF (TG_OP = 'DELETE') THEN
+						-- SHOULD NEVER OCCUR
+
+					  ELSIF (TG_OP = 'UPDATE') THEN
+						IF(OLD.duplicate_choice_solution_id != NEW.duplicate_choice_solution_id) THEN
+							IF(OLD.duplicate_choice_solution_id != -1) THEN
+
+								UPDATE qapoll_choice_solution
+								SET
+									total_votes = total_votes - OLD.solution_votes,
+									total_plus_votes = total_plus_votes - OLD.solution_plus_votes,
+									total_equal_votes = total_equal_votes - OLD.solution_equal_votes,
+									total_minus_votes = total_minus_votes - OLD.solution_minus_votes
+								WHERE id = OLD.duplicate_choice_solution_id;
+
+								affected_solution = OLD.duplicate_choice_solution_id;
+
+							ELSE
+
+								affected_solution = OLD.id;
+
+							END IF;
+							--RAISE NOTICE 'affected %', affected_solution;
+							-- Update the totalvotes field of the affected ideas. It reflects the max sum of votes of its solutions.
+							FOR choice IN SELECT DISTINCT choiceid FROM qapoll_choice_solution_link
+								WHERE choicesolutionid = affected_solution
+							LOOP
+								EXECUTE 'UPDATE qapoll_choice SET totalvotes = (SELECT COALESCE(MAX(qapoll_choice_solution.total_votes), 0)  
+										FROM qapoll_choice_solution
+										JOIN qapoll_choice_solution_link  ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+										WHERE qapoll_choice_solution_link.choiceid = ' || choice.choiceid || ' AND 
+										qapoll_choice_solution.status = 1 AND 
+										qapoll_choice_solution_link.status = 1 AND 
+										qapoll_choice_solution_link.advertize = 1)  
+									WHERE id=' || choice.choiceid;
+								--RAISE NOTICE 'd %', choice.choiceid;
+							END LOOP;
+
+
+
+							IF(NEW.duplicate_choice_solution_id != -1) THEN
+
+								UPDATE qapoll_choice_solution
+								SET
+									total_votes = total_votes + NEW.solution_votes,
+									total_plus_votes = total_plus_votes + NEW.solution_plus_votes,
+									total_equal_votes = total_equal_votes+ NEW.solution_equal_votes,
+									total_minus_votes = total_minus_votes + NEW.solution_minus_votes
+								WHERE id = NEW.duplicate_choice_solution_id;
+
+								affected_solution = NEW.duplicate_choice_solution_id;
+
+							ELSE
+
+								affected_solution = NEW.id;
+
+
+							END IF;
+							--RAISE NOTICE 'affected %', affected_solution;
+							-- Update the totalvotes field of the affected ideas. It reflects the max sum of votes of its solutions.
+							FOR choice IN SELECT DISTINCT choiceid FROM qapoll_choice_solution_link
+								WHERE choicesolutionid = affected_solution
+							LOOP
+								--RAISE NOTICE 'd %', choice.choiceid;
+								EXECUTE 'UPDATE qapoll_choice SET totalvotes = (SELECT COALESCE(MAX(qapoll_choice_solution.total_votes), 0)  
+										FROM qapoll_choice_solution
+										JOIN qapoll_choice_solution_link  ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+										WHERE qapoll_choice_solution_link.choiceid = ' || choice.choiceid || ' AND 
+										qapoll_choice_solution.status = 1 AND 
+										qapoll_choice_solution_link.status = 1 AND 
+										qapoll_choice_solution_link.advertize = 1)  
+									WHERE id=' || choice.choiceid;
+
+							END LOOP;
+
+
+
+
+						END IF;
+
+						--If the status change
+						IF(OLD.status != NEW.status) THEN
+							--Let's say the duplicate number won't change at the same time.
+							IF(NEW.duplicate_choice_solution_id != -1) THEN
+								affected_solution = NEW.duplicate_choice_solution_id;
+							ELSE
+								affected_solution = NEW.id;
+							END IF;
+
+							--RAISE NOTICE 'affected %', affected_solution;
+							-- Update the totalvotes field of the affected ideas. It reflects the max sum of votes of its solutions.
+							FOR choice IN SELECT DISTINCT choiceid FROM qapoll_choice_solution_link
+								WHERE choicesolutionid = affected_solution
+							LOOP
+								--RAISE NOTICE 'd %', choice.choiceid;
+								EXECUTE 'UPDATE qapoll_choice SET totalvotes = (SELECT COALESCE(MAX(qapoll_choice_solution.total_votes), 0)  
+										FROM qapoll_choice_solution
+										JOIN qapoll_choice_solution_link  ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+										WHERE qapoll_choice_solution_link.choiceid = ' || choice.choiceid || ' AND 
+										qapoll_choice_solution.status = 1 AND 
+										qapoll_choice_solution_link.status = 1 AND 
+										qapoll_choice_solution_link.advertize = 1)  
+									WHERE id=' || choice.choiceid;
+
+							END LOOP;
+
+						END IF;
+		
+					  ELSIF (TG_OP = 'INSERT') THEN
+
+						-- NORMALLY ALL INSERTED SOLUTION ARE NOT DUPLICATE. Would be silly ;)
+
+					END IF;
+
+
+					  RETURN NULL;
+
+				    END;
+				\$qapoll_maintain_votes_sums_2\$ LANGUAGE plpgsql;
+
+				--
+				-- Used as a trigger in the qapoll_choice_solution_link table
+				-- This trigger will keep the integrity of the totalvotes qapoll_choice field, which contains the higher totalvotes of its solutions
+				--
+				CREATE OR REPLACE FUNCTION qapoll_maintain_votes_sums_3() RETURNS TRIGGER AS \$qapoll_maintain_votes_sums_3\$
+				    DECLARE
+				    	choice RECORD;
+				    BEGIN
+
+					  -- Work out the increment/decrement amount(s).
+					  IF (TG_OP = 'DELETE') THEN
+						-- SHOULD NEVER OCCUR
+
+					  ELSIF (TG_OP = 'UPDATE') THEN
+						IF(OLD.status != NEW.status OR OLD.advertize != NEW.advertize) THEN
+
+							EXECUTE 'UPDATE qapoll_choice SET totalvotes = (SELECT COALESCE(MAX(qapoll_choice_solution.total_votes), 0)  
+									FROM qapoll_choice_solution
+									JOIN qapoll_choice_solution_link  ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+									WHERE qapoll_choice_solution_link.choiceid = ' || NEW.choiceid || ' AND 
+									qapoll_choice_solution.status = 1 AND 
+									qapoll_choice_solution_link.status = 1 AND 
+									qapoll_choice_solution_link.advertize = 1)  
+								WHERE id=' || NEW.choiceid;
+
+
+
+						END IF;
+					  ELSIF (TG_OP = 'INSERT') THEN
+
+						EXECUTE 'UPDATE qapoll_choice SET totalvotes = (SELECT COALESCE(MAX(qapoll_choice_solution.total_votes), 0)  
+								FROM qapoll_choice_solution
+								JOIN qapoll_choice_solution_link  ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+								WHERE qapoll_choice_solution_link.choiceid = ' || NEW.choiceid || ' AND 
+								qapoll_choice_solution.status = 1 AND 
+								qapoll_choice_solution_link.status = 1 AND 
+								qapoll_choice_solution_link.advertize = 1)  
+							WHERE id=' || NEW.choiceid;
+
+					END IF;
+
+
+					  RETURN NULL;
+
+				    END;
+				\$qapoll_maintain_votes_sums_3\$ LANGUAGE plpgsql;
+
+
+
+
+
+
+
+
+
+
+				--
+				-- Update the index of the title + description, for a fast and efficient search!!
+				--
+				CREATE OR REPLACE FUNCTION update_searchable_index_trigger() RETURNS trigger AS $$
+				begin
+				  new.searchable_index_col :=
+				     setweight(to_tsvector('pg_catalog.english', coalesce(new.title,'')), 'A') ||
+				     setweight(to_tsvector('pg_catalog.english', coalesce(new.description,'')), 'D');
+				  new.totalsearchable_index_col = new.searchable_index_col || new.solutionssearchable_index_col;
+				  
+				  return new;
+				end
+				$$ LANGUAGE plpgsql;
+
+
+				--
+				-- Update the index of the title + description of the solution, plus all the corresponding choice
+				--
+				CREATE OR REPLACE FUNCTION update_solution_searchable_index_trigger() RETURNS trigger AS \$update_solution_searchable_index_trigger\$
+				DECLARE
+
+					totalsearchindex tsvector;
+
+				BEGIN
+					new.searchable_index_col :=
+						setweight(to_tsvector('pg_catalog.english', coalesce(new.title,'')), 'A') ||
+						setweight(to_tsvector('pg_catalog.english', coalesce(new.description,'')), 'D');
+
+					return new;
+				end
+				\$update_solution_searchable_index_trigger\$ LANGUAGE plpgsql;
+
+
+
+				--
+				-- When we create a link, update the pre-hashed index of the title + description of the solution with their solution
+				--
+				CREATE OR REPLACE FUNCTION update_searchable_index_on_link_change_trigger() RETURNS trigger AS \$update_searchable_index_on_link_change_trigger\$
+				DECLARE
+					choice RECORD;
+					choicesolution RECORD;
+					totalsearchindex tsvector;
+					updatesearchchoiceindex integer;
+					affectedchoice integer;
+					affectedchoice2 integer;
+				BEGIN
+					updatesearchchoiceindex = 1;
+					affectedchoice = 0;
+					affectedchoice2 = 0;
+
+					IF (TG_OP = 'DELETE') THEN
+						updatesearchchoiceindex = 1;
+						affectedchoice = OLD.choiceid;
+
+					ELSIF (TG_OP = 'UPDATE') THEN
+
+						IF(OLD.choiceid != NEW.choiceid OR OLD.choicesolutionid != NEW.choicesolutionid OR OLD.status != NEW.status) THEN
+							updatesearchchoiceindex = 1;
+							affectedchoice = OLD.choiceid;
+							affectedchoice2 = NEW.choiceid;
+
+						END IF;
+
+					ELSIF (TG_OP = 'INSERT') THEN
+						updatesearchchoiceindex = 1;
+						affectedchoice = NEW.choiceid;
+
+					END IF;
+
+					IF (updatesearchchoiceindex = 1) THEN
+
+						-- Update the searchable index field of the affected ideas.
+
+						IF(affectedchoice != 0) THEN
+							totalsearchindex = '';
+		
+							FOR choicesolution IN SELECT * FROM qapoll_choice_solution
+								JOIN qapoll_choice_solution_link ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+								WHERE choiceid = affectedchoice AND qapoll_choice_solution_link.status = 1
+							LOOP
+								totalsearchindex = totalsearchindex || choicesolution.searchable_index_col;
+
+							END LOOP;
+
+
+							UPDATE qapoll_choice SET solutionssearchable_index_col =   totalsearchindex::tsvector WHERE id= affectedchoice;
+							UPDATE qapoll_choice SET totalsearchable_index_col = searchable_index_col || solutionssearchable_index_col WHERE id= affectedchoice;
+						END IF;
+
+						IF(affectedchoice2 != 0) THEN
+							totalsearchindex = '';
+
+							FOR choicesolution IN SELECT * FROM qapoll_choice_solution
+								JOIN qapoll_choice_solution_link ON qapoll_choice_solution_link.choicesolutionid = qapoll_choice_solution.id
+								WHERE choiceid = affectedchoice2 AND qapoll_choice_solution_link.status = 1
+							LOOP
+								totalsearchindex = totalsearchindex || choicesolution.searchable_index_col;
+
+							END LOOP;
+
+							UPDATE qapoll_choice SET solutionssearchable_index_col =   totalsearchindex::tsvector WHERE id=affectedchoice2;
+							UPDATE qapoll_choice SET totalsearchable_index_col = searchable_index_col || solutionssearchable_index_col WHERE id=affectedchoice2;
+						END IF;
+
+					END IF;
+
+					RETURN NULL;
+				end
+				\$update_searchable_index_on_link_change_trigger\$ LANGUAGE plpgsql;
+
+
+
+		");
+
+
+		//Now add some triggers
+		it_query("
+			CREATE TRIGGER qapoll_maintain_votes_sums
+				AFTER INSERT OR UPDATE OR DELETE ON qapoll_vote
+				    FOR EACH ROW EXECUTE PROCEDURE qapoll_maintain_votes_sums();
+
+			CREATE TRIGGER qapoll_maintain_votes_sums_2
+			AFTER INSERT OR UPDATE OR DELETE ON qapoll_choice_solution
+			    FOR EACH ROW EXECUTE PROCEDURE qapoll_maintain_votes_sums_2();
+
+			CREATE TRIGGER qapoll_maintain_votes_sums_3
+			AFTER INSERT OR UPDATE OR DELETE ON qapoll_choice_solution_link
+			    FOR EACH ROW EXECUTE PROCEDURE qapoll_maintain_votes_sums_3();
+
+			CREATE TRIGGER qapoll_choice_update_searchable_index BEFORE INSERT OR UPDATE
+			ON qapoll_choice FOR EACH ROW EXECUTE PROCEDURE update_searchable_index_trigger();
+
+			CREATE TRIGGER qapoll_choice_solution_update_searchable_index BEFORE INSERT OR UPDATE
+			ON qapoll_choice_solution FOR EACH ROW EXECUTE PROCEDURE update_solution_searchable_index_trigger();
+
+			CREATE TRIGGER qapoll_choice_solution_link_update_searchable_index AFTER INSERT OR UPDATE OR DELETE
+			ON qapoll_choice_solution_link FOR EACH ROW EXECUTE PROCEDURE update_searchable_index_on_link_change_trigger();
+
+		");
+
+
+		//Now launch the basic configuration, to make the module work.
+		/**$next_qawebsite_site_id =  db_next_id("{qawebsite_site}_id");
+		$next_qapoll_poll_id =  db_next_id("{qapoll_poll}_id");
+		$next_qapoll_entry_point_id =  db_next_id("{qapoll_entry_point}_id");
+		$next_qapoll_entry_point_menu_id =  db_next_id("{qapoll_entry_point_menu}_id");*/
+		it_query("
+			-- Default qawebsite site
+			INSERT INTO qawebsite_site(subdomain, title, userrole, adminrole, moderatorrole, developerrole)
+				VALUES('%%', 'Default Ideatorrent site', 'Ideatorrent user permissions (2/2)', 
+				'Ideatorrent admin permissions (2/2)', 'Ideatorrent moderator permissions (2/2)', 'Ideatorrent developer permissions (2/2)');
+
+			");
+		$next_qawebsite_site_id = db_last_insert_id("qawebsite_site", "id");
+
+		it_query("
+
+			-- Some default module settings
+			INSERT INTO qawebsite_module_setting(siteid, module, option, value)
+				VALUES(" . $next_qawebsite_site_id . ", 'ideatorrent', 'default_number_item_per_page', '20');
+			INSERT INTO qawebsite_module_setting(siteid, module, option, value)
+				VALUES(" . $next_qawebsite_site_id . ", 'ideatorrent', 'choice_number_approvals_needed', '2');
+			INSERT INTO qawebsite_module_setting(siteid, module, option, value)
+				VALUES(" . $next_qawebsite_site_id . ", 'ideatorrent', 'selected_theme', 'brownie');
+			INSERT INTO qawebsite_module_setting(siteid, module, option, value)
+				VALUES(" . $next_qawebsite_site_id . ", 'ideatorrent', 'start_page', '');
+
+			-- Some user settings
+			INSERT INTO qawebsite_user_setting(siteid, module, title, type, description)
+				VALUES(" . $next_qawebsite_site_id . ", 'ideatorrent', 'I can receive private messages', 'checkbox',
+				'Whether you want to receive private messages by registered users.');
+
+			-- Default poll
+			INSERT INTO qapoll_poll(siteid, title, description, startdate, enddate, userid, date, status)
+				VALUES(" . $next_qawebsite_site_id . ", 'Default poll', 'Default poll', NOW(), NOW(), 1, NOW(), 1);
+			");
+		$next_qapoll_poll_id = db_last_insert_id("qapoll_poll", "id");
+
+			
+		it_query("
+			-- Default entry point
+			INSERT INTO qapoll_entry_point(pollid, url_name, title, description, filter)
+				VALUES(" . $next_qapoll_poll_id . ", 'all', 'Default entry point', 'Default entry point',
+				'type_bug=0');
+			");
+		$next_qapoll_entry_point_id = db_last_insert_id("qapoll_entry_point", "id");
+
+		it_query("
+			-- Menu entries
+			INSERT INTO qapoll_entry_point_menu(menu_name, ordering, url_pattern, menu_title, status, entry_point_id)
+				VALUES('name', 1, '%%', 'Administration', 0, " . $next_qapoll_entry_point_id . ");
+			");
+		$next_qapoll_entry_point_menu_id = db_last_insert_id("qapoll_entry_point_menu", "id");
+
+		it_query("
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Process duplicate reports', '/process_duplicate_reports/', " . $next_qapoll_entry_point_menu_id . ",
+				'-1', '0', '0', ':process_report');
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Process spam reports', '/process_spam_reports/', " . $next_qapoll_entry_point_menu_id . ",
+				'-1', '0', '1', ':process_report');
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Process offensive reports', '/process_offensive_reports/', " . $next_qapoll_entry_point_menu_id . ", 
+				'-1', '0', '3', ':process_report');
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Process in dev reports', '/process_indev_reports/', " . $next_qapoll_entry_point_menu_id . ", 
+				'-1', '0', '4', ':process_report');
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Process implemented reports', '/process_implemented_reports/', " . $next_qapoll_entry_point_menu_id . ", 
+				'-1', '0', '5', ':process_report');
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Process irrelevance reports', '/process_irrelevance_reports/', " . $next_qapoll_entry_point_menu_id . ", 
+				'-1', '0', '2', ':process_report');
+			INSERT INTO qapoll_entry_point_menu_entry(name, url, menu_id, user_id, status, ordering, permission_needed)
+				VALUES('Admin panel', '/ideatorrent_admin/', " . $next_qapoll_entry_point_menu_id . ", 
+				'-1', '0', '100', 'EntryPoint:show_admin_page');
+			");
+			// Permissions entries
+			it_query("INSERT INTO qapoll_permission(name, permissions, date, description, permission_level, icon_name, ordering, display_name) VALUES('Ideatorrent admin permissions (1/2)', '%s', NOW(), 'The admin has all rights over Brainstorm', 2, 'images/minilogo.png', 9999, 'Administrator');", 'a:1:{s:6:"global";a:1:{s:3:"all";b:1;}} ');
+			it_query("INSERT INTO qapoll_permission(name, permissions, date, description, permission_level, icon_name, ordering) VALUES('Ideatorrent user permissions (1/2)', '%s', NOW(), 'A registered user have some basic rights over ideas', 0, null, 0);", 'a:4:{s:6:"global";a:0:{}s:6:"Choice";a:3:{s:11:"owner_perms";a:2:{s:13:"edit_relation";b:1;s:13:"edit_solution";b:1;}s:11:"submit_idea";b:1;s:15:"submit_solution";b:1;}s:4:"Menu";a:1:{s:22:"show_my_dashboard_link";b:1;}s:14:"ChoiceSolution";a:1:{s:11:"owner_perms";a:1:{s:13:"edit_solution";b:1;}}}');
+			it_query("INSERT INTO qapoll_permission(name, permissions, date, description, permission_level, icon_name, ordering, display_name) VALUES('Ideatorrent developer permissions (1/2)', '%s', NOW(), 'The Ubuntu developer can set the status and developers comments of an idea.', 2, 'images/minilogo.png', 50, 'Developer');", 'a:2:{s:6:"global";a:0:{}s:6:"Choice";a:7:{s:11:"edit_status";b:1;s:19:"edit_target_release";b:1;s:17:"edit_dev_comments";b:1;s:13:"edit_relation";b:1;s:19:"search_by_admintags";b:1;s:12:"approve_idea";b:1;s:15:"select_solution";b:1;}}');
+			it_query("INSERT INTO qapoll_permission(name, permissions, date, description, permission_level, icon_name, ordering, display_name) VALUES('Ideatorrent moderator permissions (1/2)', '%s', NOW(), 'The moderator can delete an idea, change its status.', 1, 'images/minilogo.png', 2, 'Moderator');", 'a:3:{s:6:"global";a:1:{s:14:"process_report";b:1;}s:6:"Choice";a:10:{s:11:"edit_status";b:1;s:19:"edit_target_release";b:1;s:13:"edit_relation";b:1;s:12:"approve_idea";b:1;s:15:"delete_solution";b:1;s:17:"mark_solution_dup";b:1;s:8:"mark_dup";b:1;s:13:"edit_solution";b:1;s:10:"edit_title";b:1;s:16:"edit_description";b:1;}s:4:"User";a:1:{s:17:"delete_user_items";b:1;}}');
+			it_query("INSERT INTO qapoll_permission(name, permissions, date, description, permission_level, icon_name, ordering, display_name) VALUES('Ideatorrent idea reviewer permissions (1/1)', '%s', NOW(), 'The idea reviewer can add its vote on an idea in the candidate list.', 1, 'images/minilogo.png', 1, 'Idea Reviewer');", 'a:2:{s:6:"global";a:0:{}s:6:"Choice";a:1:{s:14:"filtered_perms";a:1:{s:82:"state_workinprogress=0&state_done=0&state_awaiting_moderation=1&duplicate_items=-2";a:7:{s:22:"status_mark_as_nonidea";b:1;s:34:"status_mark_as_already_implemented";b:1;s:13:"edit_relation";b:1;s:12:"approve_idea";b:1;s:13:"edit_solution";b:1;s:10:"edit_title";b:1;s:16:"edit_description";b:1;}}}} ');
+		
+			//Now let's declare some strings used above, wrapped with t(), the i18n function, so that these strings stored in the DB
+			//are extracted by the drupal string parser, so that we can have a translation of them.
+			//We are NOT storing translated strings
+			$boo = t('Default Ideatorrent site');
+			$boo = t('Ideatorrent user permissions (2/2)');
+			$boo = t('Ideatorrent admin permissions (2/2)');
+			$boo = t('Ideatorrent moderator permissions (2/2)');
+			$boo = t('Ideatorrent developer permissions (2/2)');
+			$boo = t('Ideatorrent user permissions (1/2)');
+			$boo = t('Ideatorrent admin permissions (1/2)');
+			$boo = t('Ideatorrent moderator permissions (1/2)');
+			$boo = t('Ideatorrent developer permissions (1/2)');
+			$boo = t('Whether you want to receive private messages by registered users.');
+			$boo = t('Default poll');
+			$boo = t('Default entry point');
+			$boo = t('Administration');
+			$boo = t('Process duplicate reports');
+			$boo = t('Process spam reports');
+			$boo = t('Process offensive reports');
+			$boo = t('Process in dev reports');
+			$boo = t('Process implemented reports');
+			$boo = t('Process irrelevance reports');
+			$boo = t('Admin panel');
+			$boo = t('Ideatorrent idea reviewer permissions (1/1)');
+			$boo = t('Administrator');
+			$boo = t('Developer');
+			$boo = t('Moderator');
+			$boo = t('Idea Reviewer');
+
+
+	break;
+    }
+}
+
+function ideatorrent_uninstall() {
+    $prefix="qapoll";
+
+
+	switch ($GLOBALS['db_type']) {
+		case 'pgsql':
+		//Drop the basic configuration
+		it_query("DELETE FROM qawebsite_site WHERE title='Default Ideatorrent site';");
+		it_query("DELETE FROM qawebsite_module_setting WHERE module='ideatorrent';");
+		it_query("DELETE FROM qawebsite_user_setting WHERE module='ideatorrent';");
+
+		//Drop the indexes
+		it_query("DROP INDEX ".$prefix."_vote_userid;");
+		it_query("DROP INDEX ".$prefix."_choice_bookmark_userid;");
+		it_query("DROP INDEX ".$prefix."_choice_totalvotes;");
+		it_query("DROP INDEX ".$prefix."_choice_date;");
+		it_query("DROP INDEX ".$prefix."_choice_duplicatenumber;");
+		it_query("DROP INDEX ".$prefix."_choice_comment_choiceid;");
+		it_query("DROP INDEX ".$prefix."_choice_tag_choice_id;");
+		it_query("DROP INDEX ".$prefix."_choice_solution_link_choiceid;");
+		it_query("DROP INDEX ".$prefix."_choice_solution_link_choicesolutionid;");
+
+		//Drop all the tables
+
+		it_query('DROP TABLE {'.$prefix.'_report_vote}');
+		it_query('DROP TABLE {'.$prefix.'_report}');
+		it_query('DROP TABLE {'.$prefix.'_choice_approval_vote}');
+		it_query('DROP TABLE {'.$prefix.'_poll_relation_subcategory}');
+		it_query('DROP TABLE {'.$prefix.'_permission}');
+		it_query('DROP TABLE {'.$prefix.'_choice_tag}');
+		it_query('DROP TABLE {'.$prefix.'_poll_relation}');
+		it_query('DROP TABLE {'.$prefix.'_poll_relation_category}');
+		it_query('DROP TABLE {'.$prefix.'_choice_bookmark}');
+		it_query('DROP TABLE {'.$prefix.'_release}');
+		it_query('DROP TABLE {'.$prefix.'_stats}');
+		it_query('DROP TABLE {'.$prefix.'_choice_log}');
+		it_query('DROP TABLE {'.$prefix.'_log}');
+		it_query('DROP TABLE {'.$prefix.'_poll}');
+		it_query('DROP TABLE {'.$prefix.'_choice_solution_link}');
+		it_query('DROP TABLE {'.$prefix.'_choice_solution}');
+		it_query('DROP TABLE {'.$prefix.'_choice}');
+		it_query('DROP TABLE {'.$prefix.'_choice_duplicate_report}');
+		it_query('DROP TABLE {'.$prefix.'_choice_comment}');
+		it_query('DROP TABLE {'.$prefix.'_poll_category}');
+		it_query('DROP TABLE {'.$prefix.'_vote}');
+		it_query('DROP TABLE {'.$prefix.'_entry_point}');
+		it_query('DROP TABLE {'.$prefix.'_entry_point_menu}');
+		it_query('DROP TABLE {'.$prefix.'_entry_point_menu_entry}');
+		it_query('DROP TABLE {'.$prefix.'_image_link}');
+
+		//Drop the functions
+
+		it_query("DROP FUNCTION update_searchable_index_on_link_change_trigger();");
+		it_query("DROP FUNCTION update_solution_searchable_index_trigger();");
+		it_query("DROP FUNCTION update_searchable_index_trigger();");
+		it_query("DROP FUNCTION qapoll_maintain_votes_sums_3();");
+		it_query("DROP FUNCTION qapoll_maintain_votes_sums_2();");
+		it_query("DROP FUNCTION qapoll_maintain_votes_sums();");
+		it_query("DROP FUNCTION qapoll_compute_number_of_votes(integer, integer);");
+		it_query("DROP LANGUAGE plpgsql;");
+
+		break;
+	}
+
+}
+
+?>

@@ -1,0 +1,2297 @@
+# Swedish translation for ideatorrent
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the ideatorrent package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ideatorrent\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2008-12-09 21:39-0800\n"
+"PO-Revision-Date: 2009-01-11 13:52+0000\n"
+"Last-Translator: sco <stefan.cohen@gmail.com>\n"
+"Language-Team: Swedish <sv@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-01-12 10:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: controller.php:203
+msgid "No polls defined on this website yet."
+msgstr "Inga omröstningar har skapats än"
+
+#: controller.php:548 themes/brownie/common/navigationtopbar.php:235;240 themes/ubuntu_brainstorm/common/navigationtopbar.php:235;240
+msgid "Idea sandbox"
+msgstr "Idésandlåda"
+
+#: controller.php:624 themes/brownie/common/navigationtopbar.php:269;273 themes/ubuntu_brainstorm/common/navigationtopbar.php:269;273
+msgid "Ideas in development"
+msgstr "Idéer under utveckling"
+
+#: controller.php:700 themes/brownie/common/navigationtopbar.php:283;287 themes/ubuntu_brainstorm/common/navigationtopbar.php:283;287
+msgid "Implemented ideas"
+msgstr "Genomförda idéer."
+
+#: controller.php:716;733;739;745;765 themes/brownie/common/navigationtopbar.php:255;259 themes/ubuntu_brainstorm/common/navigationtopbar.php:255;259
+msgid "Popular ideas"
+msgstr "Populära idéer"
+
+#: controller.php:727
+msgid "Random ideas"
+msgstr "Slumpmässiga idéer"
+
+#: controller.php:751
+msgid "Latest ideas"
+msgstr "Senaste idéerna"
+
+#: controller.php:759 themes/brownie/choicelist/ideas_in_development_v2.php:243 themes/brownie/choicelist/ideas_in_preparation.php:226 themes/brownie/choicelist/implemented_ideas_v2.php:244 themes/brownie/choicelist/popular_ideas.php:217 themes/brownie/choicelist/user_items_v2.php:252 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:243 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:232 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:244 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:222 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:252
+msgid "Latest comments"
+msgstr "Senaste kommentarerna"
+
+#: controller.php:817 themes/brownie/choicelist/user_items_v2.php:184 themes/brownie/menublock/default.php:284 themes/brownie/user/default.php:149 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:184 themes/ubuntu_brainstorm/menublock/default.php:284 themes/ubuntu_brainstorm/user/default.php:149
+msgid "My dashboard"
+msgstr "Min startsida"
+
+#: controller.php:819 themes/brownie/choicelist/user_items_v2.php:204 themes/brownie/user/default.php:169 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:204 themes/ubuntu_brainstorm/user/default.php:169
+msgid "Contributor !name"
+msgstr "Användare !name"
+
+#: controller.php:841;855
+msgid "Your new preferences are saved."
+msgstr "Dina nya inställningar har sparats."
+
+#: controller.php:869
+msgid ""
+"To prevent spam by robots, there is a 1 minute minimum interval between each "
+"private message. Please wait."
+msgstr ""
+"För att undvika spamrobotar så är det en lägsta gräns på en minut mellan "
+"varje privat meddelande. Var vänlig vänta."
+
+#: controller.php:873
+msgid "This user does not want to receive private messages."
+msgstr "Den här användaren vill inte ta emot privata meddelanden."
+
+#: controller.php:887
+msgid "Your message has been sent."
+msgstr "Ditt meddelande har skickats."
+
+#: controller.php:891
+msgid "An error occured while sending your message."
+msgstr "Ett fel uppstod när ditt meddelande skickades."
+
+#: controller.php:913
+msgid "All the user comments have been deleted."
+msgstr "Alla användarkommentarer har raderats."
+
+#: controller.php:931
+msgid "All the user solutions have been deleted."
+msgstr "Alla användarlösningar har raderats."
+
+#: controller.php:949
+msgid "All the user ideas have been deleted."
+msgstr "Alla användaridéer har raderats."
+
+#: controller.php:1181;1682
+msgid "You need to login first!"
+msgstr "Du måste logga in först!"
+
+#: controller.php:1234
+msgid "Idea #!number: \"!title\""
+msgstr "Idé #!number: \"!title\""
+
+#: controller.php:1299
+msgid "The idea was bookmarked."
+msgstr "Idén bokmärktes."
+
+#: controller.php:1324;2340
+msgid "Thanks for your vote."
+msgstr "Tack för din röst."
+
+#: controller.php:1340
+msgid "The bookmark was removed."
+msgstr "Bokmärket togs bort."
+
+#: controller.php:1356
+msgid "Duplicate link removed."
+msgstr "Dublettlänk togs bort."
+
+#: controller.php:1373
+msgid "Comment deleted."
+msgstr "Kommentar raderad"
+
+#: controller.php:1393
+msgid "Comment reported as spam, moderators will look at it soon."
+msgstr ""
+"Kommentaren har rapporterats som skräppost, moderartorer kommer att kolla på "
+"det snarast."
+
+#: controller.php:1395
+msgid "You already reported this comment as spam."
+msgstr "Du har redan rapporterat den här kommentaren som spam."
+
+#: controller.php:1416
+msgid "Comment reported as offensive, moderators will look at it soon."
+msgstr ""
+"Kommentaren är rapporterad som offensiv. Moderatorer kommer att granska den "
+"snart."
+
+#: controller.php:1418
+msgid "You already reported this comment as offensive."
+msgstr "Du har redan rapporterat kommentaren som offensiv"
+
+#: controller.php:1439
+msgid "Idea reported as spam, moderators will look at it soon."
+msgstr ""
+"Idén är rapporterad som spam. Moderatorer kommer att granska den snart"
+
+#: controller.php:1441
+msgid "You already reported this idea as spam."
+msgstr "Du har redan rapporterat den här idén som spam"
+
+#: controller.php:1462
+msgid "Item reported as not being an idea, moderators will look at it soon."
+msgstr ""
+"Inlägget är rapporterat som ej en idé. Moderatorer kommer att granska det "
+"snart."
+
+#: controller.php:1464
+msgid "You already reported this item as not an idea."
+msgstr "Du har redan rapporterat inlägget som ej en idé"
+
+#: controller.php:1485
+msgid ""
+"Idea reported as being in development, moderators will look at it soon."
+msgstr ""
+"Idén rapporterad som under utveckling. Moderatorer kommer att granska den "
+"snart."
+
+#: controller.php:1487
+msgid "You already reported this idea as being in development."
+msgstr "Du har redan rapporterat idén som under utveckling."
+
+#: controller.php:1508
+msgid "Idea reported as being implemented, moderators will look at it soon."
+msgstr ""
+"Idén rapporterad som genomförd. Moderatorer kommer att granska den snart."
+
+#: controller.php:1510
+msgid "You already reported this idea as being implemented."
+msgstr "Du har redan rapporterat denna idé som genomförd,"
+
+#: controller.php:1529
+msgid "Log of idea #!number: \"!title\""
+msgstr "Log för idé #!number: \"!title\""
+
+#: controller.php:1542
+msgid "You must be logged in to report a duplicate."
+msgstr "Du måste vara inloggad for att rapportera en dubblett"
+
+#: controller.php:1557
+msgid "Thanks for the duplicate report, we will look at it soon."
+msgstr "Tack för dubblettrapporten. Vi kommer att granska den snart."
+
+#: controller.php:1565;1574
+msgid "Report duplicate of \"!title\""
+msgstr "Rapportera som dubblett av \"!title\""
+
+#: controller.php:1658
+msgid "Thanks for the modifications."
+msgstr "Tack för dina ändringar"
+
+#: controller.php:1709
+msgid "Thanks for your comment."
+msgstr "Tack för din kommentar"
+
+#: controller.php:1742
+msgid ""
+"To prevent spam, there is a 5 minutes minimum interval between each solution "
+"submission. Please wait."
+msgstr ""
+"För att förhindra spam måste du vänta minst fem minuter mellan varje "
+"framlagt lösningsförslag. Vänligen vänta."
+
+#: controller.php:1758
+msgid "Thanks for proposing your solution."
+msgstr "Tack för ditt lösningsförslag"
+
+#: controller.php:1784
+msgid "New tags saved."
+msgstr "Nya ettiketter är sparade"
+
+#: controller.php:1803
+msgid "New admin tags saved."
+msgstr "Nya administratörsettiketter är sparade"
+
+#: controller.php:1821
+msgid "New status saved."
+msgstr "Ny status är sparad"
+
+#: controller.php:1839
+msgid "New target release saved."
+msgstr "Ny målversion är sparad"
+
+#: controller.php:1887;2065
+msgid "Thanks for your attention to detail."
+msgstr "Tack för din uppmärksamhet på detaljer."
+
+#: controller.php:1889;2540;2562
+msgid "An error occured."
+msgstr "Ett fel uppstod."
+
+#: controller.php:1913
+msgid "The solution was reported as spam, moderators will look at it soon."
+msgstr ""
+"Förslaget var rapporterat som spam. Moderatorer kommer att granska det snart."
+
+#: controller.php:1915
+msgid "You already reported this solution as spam."
+msgstr "Du har redan rapporterat denna lösning som spam."
+
+#: controller.php:1939
+msgid ""
+"The solution was reported as irrelevant, moderators will look at it soon."
+msgstr ""
+"Lösningen blev rapporterad som spam. Moderatorer kommer att granska den "
+"snart."
+
+#: controller.php:1941
+msgid "You already reported this solution as irrelevant."
+msgstr "Du har redan rapporterat denna lösning som irrelevant."
+
+#: controller.php:1971
+msgid "Rationale<->Solution link deleted."
+msgstr "Länken Bakgrund<->Lösning har tagits bort."
+
+#: controller.php:2001
+msgid "Solution deleted."
+msgstr "Lösningen har tagits bort."
+
+#: controller.php:2044
+msgid "The solution was marked as duplicate."
+msgstr "Lösningen har markerats som en dubblett."
+
+#: controller.php:2046
+msgid "A error occured while marking as duplicate."
+msgstr "Ett fel inträffade när objektet skulle markeras som dubblett."
+
+#: controller.php:2098
+msgid "The idea was marked as duplicate."
+msgstr "Idén blev markerad som en dubblett"
+
+#: controller.php:2100
+msgid ""
+"A error occured while marking as duplicate. Either the target idea is "
+"already a dup, or it does not exist."
+msgstr ""
+"Ett fel inträffade när objektet skulle markeras som en dubblett. Antingen "
+"var målidén redan en dubblett eller så existerade den inte."
+
+#: controller.php:2147
+msgid "Idea approved."
+msgstr "Idén är godkänd."
+
+#: controller.php:2174
+msgid "Idea marked as invalid."
+msgstr "Idén är markerad som ej giltig."
+
+#: controller.php:2200
+msgid "Idea marked as already implemented."
+msgstr "Idén är markerad som redan genomförd"
+
+#: controller.php:2217
+msgid "The idea was successfully deleted."
+msgstr "Idén togs bort."
+
+#: controller.php:2219;2235
+msgid "Internal error while deleting this idea."
+msgstr "Ett internt fel inträffade när idén skulle tas bort."
+
+#: controller.php:2233
+msgid "The idea was successfully undeleted."
+msgstr "Idén är ej längre borttagen."
+
+#: controller.php:2258
+msgid "Thank you for posting!"
+msgstr "Tack för ditt inlägg"
+
+#: controller.php:2269;2303
+msgid "Submit your idea (3/3)"
+msgstr "Skicka din idé (3/3)"
+
+#: controller.php:2289;2308
+msgid "Submit your idea (2/3)"
+msgstr "Skicka din idé (2/3)"
+
+#: controller.php:2313
+msgid "Submit your idea (1/3)"
+msgstr "Skicka din idé (1/3)"
+
+#: controller.php:2375
+msgid "Report processed."
+msgstr "Rapportera behandlad"
+
+#: controller.php:2377;2396;2486;2502;2518
+msgid ""
+"Error while processing this report. It is very likely that another admin "
+"just moderated this report before you did, or that the report was "
+"invalidated by your previous actions."
+msgstr ""
+"Ett fel inträffade när rapporten behandlades. Det är troligt att en annan "
+"administratör modererade denna rapport precis innan dig, eller att rapporten "
+"ej längre var giltig efter dina tidigare åtgärder."
+
+#: controller.php:2394
+msgid "Report discarded."
+msgstr "Rapportera kastad"
+
+#: controller.php:2481
+msgid "Duplicate report discarded."
+msgstr "Dubblettrapprorten kastad"
+
+#: controller.php:2497;2513
+msgid "Idea marked as duplicate."
+msgstr "Idén är markerad som dubblett."
+
+#: controller.php:2535
+msgid "The solution was linked to the other ideas."
+msgstr "Lösningen blev länkad till till de andra idéerna."
+
+#: controller.php:2557
+msgid "The solution was marked as dup, the votes were merged."
+msgstr "Lösningen blev markerad som en dubblett. Rösterna blev sammanslagna."
+
+#: controller.php:2605;2732
+msgid "Config updated!"
+msgstr "Konfigurationen blev uppdaterad!"
+
+#: controller.php:2631
+msgid "Category successfully modified!"
+msgstr "Kategorin blev modifierad!"
+
+#: controller.php:2646
+msgid "Category successfully deleted!"
+msgstr "Kategorin togs bort!"
+
+#: controller.php:2657
+msgid "Category successfully added!"
+msgstr "Kategorin lades till!"
+
+#: controller.php:2688
+msgid "Release successfully modified!"
+msgstr "Utgåvan modifierades!"
+
+#: controller.php:2703
+msgid "Release successfully deleted!"
+msgstr "Utgåvan togs bort!"
+
+#: controller.php:2714
+msgid "Release successfully added!"
+msgstr "Utgåvan lades till"
+
+#: ideatorrent.module:0
+msgid "ideatorrent"
+msgstr "ideatorrent"
+
+#: ideatorrent.install:1083
+msgid "Default Ideatorrent site"
+msgstr "Standard hemsida för ideatorrent"
+
+#: ideatorrent.install:1084
+msgid "Ideatorrent user permissions (2/2)"
+msgstr "ideatorrent användarrättigheter (2/2)"
+
+#: ideatorrent.install:1085
+msgid "Ideatorrent admin permissions (2/2)"
+msgstr "ideatorrent administratörsrättigheter (2/2)"
+
+#: ideatorrent.install:1086
+msgid "Ideatorrent moderator permissions (2/2)"
+msgstr "ideatorrent moderatorrättigheter (2/2)"
+
+#: ideatorrent.install:1087
+msgid "Ideatorrent developer permissions (2/2)"
+msgstr "ideatorrent utvecklarrättigheter (2/2)"
+
+#: ideatorrent.install:1088
+msgid "Ideatorrent user permissions (1/2)"
+msgstr "ideatorrent användarrättigheter (1/2)"
+
+#: ideatorrent.install:1089
+msgid "Ideatorrent admin permissions (1/2)"
+msgstr "ideatorrent administratörsrättigheter (1/2)"
+
+#: ideatorrent.install:1090
+msgid "Ideatorrent moderator permissions (1/2)"
+msgstr "ideatorrent moderatorrättigheter (1/2)"
+
+#: ideatorrent.install:1091
+msgid "Ideatorrent developer permissions (1/2)"
+msgstr "ideatorrent utvecklarrättigheter (1/2)"
+
+#: ideatorrent.install:1092
+msgid "Whether you want to receive private messages by registered users."
+msgstr "Om du vill ta emot privata meddelanden från registrerade användare."
+
+#: ideatorrent.install:1093
+msgid "Default poll"
+msgstr "Standard omröstning"
+
+#: ideatorrent.install:1094
+msgid "Default entry point"
+msgstr "Standard ingångspunkt"
+
+#: ideatorrent.install:1095
+msgid "Administration"
+msgstr "Administration"
+
+#: ideatorrent.install:1096
+msgid "Process duplicate reports"
+msgstr "Behandla dubblettrapporter"
+
+#: ideatorrent.install:1097
+msgid "Process spam reports"
+msgstr "Behandla spamrapporter"
+
+#: ideatorrent.install:1098
+msgid "Process offensive reports"
+msgstr "Behandla rapporter om offensivt innehåll"
+
+#: ideatorrent.install:1099
+msgid "Process in dev reports"
+msgstr "Behandla rapporter om under utveckling"
+
+#: ideatorrent.install:1100
+msgid "Process implemented reports"
+msgstr "Behandla idéer rapporterade som genomförda."
+
+#: ideatorrent.install:1101
+msgid "Process irrelevance reports"
+msgstr "Behandla rapporter om irrelevant innehåll"
+
+#: ideatorrent.install:1102
+msgid "Admin panel"
+msgstr "Administratörspanelen"
+
+#: ideatorrent.install:1103
+msgid "Ideatorrent idea reviewer permissions (1/1)"
+msgstr "Ideatorrent granskarrättigheter (1/1)"
+
+#: ideatorrent.install:1104
+msgid "Administrator"
+msgstr "Administratör"
+
+#: ideatorrent.install:1105
+msgid "Developer"
+msgstr "Utvecklare"
+
+#: ideatorrent.install:1106
+msgid "Moderator"
+msgstr "Moderator"
+
+#: ideatorrent.install:1107
+msgid "Idea Reviewer"
+msgstr "Idégranskare"
+
+#: ideatorrent.info:0
+msgid "IdeaTorrent"
+msgstr "IdeaTorrent"
+
+#: ideatorrent.info:0
+msgid "IdeaTorrent Open Innovation module"
+msgstr "IdeaTorrent modul för öppen innovation"
+
+#: ideatorrent.info:0
+msgid "Zebra"
+msgstr "Zebra"
+
+#: models/category.php:75
+msgid "Please enter a name for the category."
+msgstr "Skriv ett namn för kategorin."
+
+#: models/category.php:77
+msgid "Please enter an URL name for the category."
+msgstr "Skriv ett URL-namn för kategorin."
+
+#: models/category.php:79
+msgid ""
+"The URL name should be composed of alphanumeric characters and '_', '-'."
+msgstr "URL-namnet skall innehålla alfanumeriska tecken och '_', '-'."
+
+#: models/category.php:81 models/release.php:81
+msgid "The ordering value is incorrect."
+msgstr "Ordningsvärdet är fel"
+
+#: models/choice.php:253
+msgid "Internal error[1]. Please contact an administrator."
+msgstr "Internt fel[1]. Vänligen kontakta en administratör"
+
+#: models/choice.php:257
+msgid "Please enter a idea rationale title."
+msgstr "Skriv en bakgrundstitel för idén"
+
+#: models/choice.php:261
+msgid "Please enter a idea rationale description."
+msgstr "Skriv en bakgrundsbeskrivning för idén"
+
+#: models/choice.php:265
+msgid "You must select the type : idea or bug."
+msgstr "Du måste välja typ: idé eller felrapport"
+
+#: models/choice.php:269
+msgid "A bug number is required when you submit a bug."
+msgstr "Ett felrapportsnummer krävs när du rapporterar ett fel."
+
+#: models/choice.php:273
+msgid "The URL you submitted in the blueprint field does not seem valid."
+msgstr "URL:en du skickade i blueprintfältet verkar inte vara giltigt."
+
+#: models/choice.php:280
+msgid ""
+"The URL you submitted as an ubuntuforums.org thread does not seem valid."
+msgstr ""
+"URL:en du skickade som en tråd på ubuntuforums.org verkar inte vara giltig."
+
+#: models/choice.php:289
+msgid "Please choose a category that fits the best for your submission."
+msgstr "Välj en kategori som bäst passar för din idé"
+
+#: models/choice.php:293
+msgid ""
+"Please choose the project the more closely related to your submission."
+msgstr "Välj ett projekt som passar bäst för din idé"
+
+#: models/choice.php:310
+msgid ""
+"Please choose the project category the more closely related to your "
+"submission."
+msgstr "Välj en projektkategori som passar bäst för din idé"
+
+#: models/choice.php:342
+msgid ""
+"An idea has already been submitted in the website with the blueprint URL you "
+"gave. Maybe someone has already submitted what you intended to add. <a "
+"href=\"!link\">You should check it.</a>"
+msgstr ""
+"En idé finns redan med URL:en till den blueprint du angav. Någon har kanske "
+"redan sänt in en idé som motsvarar din. <a href=\"!link\">Du bör verifiera "
+"det.</a>"
+
+#: models/choice.php:357
+msgid ""
+"An idea has already been submitted in the website with the ubuntuforums.org "
+"thread URL you gave. Maybe someone has already submitted what you intended "
+"to add. <a href=\"!link\">You should check it.</a>"
+msgstr ""
+"En idé finns redan med URL:en till det inlägg på ubuntuforums,org som du "
+"angav. Någon har kanske redan sänt in en idé som motsvarar din. <a "
+"href=\"!link\">Du bör verifiera det.</a>"
+
+#: models/choice.php:369
+msgid "Please wait one minute between submissions."
+msgstr "Vänligen vänta en minut mellan dina inlägg"
+
+#: models/choicesolution.php:118
+msgid "Please enter a title for your solution."
+msgstr "Skriv en titel för ditt lösningsförslag"
+
+#: models/choicesolution.php:120
+msgid "Please enter a description for your solution."
+msgstr "Skriv en beskrivning av ditt lösningsförslag"
+
+#: models/release.php:75
+msgid "Please enter a name for the release."
+msgstr "Skriv ett namn för utgåvan."
+
+#: models/release.php:77
+msgid "Please enter an URL name for the release."
+msgstr "Skriv en URL för utgåvan."
+
+#: models/release.php:79
+msgid ""
+"The URL name should be composed of alphanumeric characters and '_', '-', '.'."
+msgstr "URL:en skall innehålla alfanumeriska tecken och '_', '-', '.'."
+
+#: themes/brownie/theme.php:39;40 themes/ubuntu_brainstorm/theme.php:39;40
+msgid "Project name"
+msgstr "Projektnamn"
+
+#: themes/brownie/theme.php:41 themes/ubuntu_brainstorm/theme.php:41
+msgid "The name of your project to use in several part of the theme."
+msgstr "Namnet på ditt projekt att använda i flera delar av temat."
+
+#: themes/brownie/theme.php:46 themes/ubuntu_brainstorm/theme.php:46
+msgid "Authorized idea description HTML tags"
+msgstr "Auktoriserade HTML-taggar för idébeskrivning."
+
+#: themes/brownie/theme.php:47 themes/ubuntu_brainstorm/theme.php:47
+msgid "The authorized HTML tags to be used in idea descriptions."
+msgstr "Auktoriserade HTML-taggar för idébeskrivningar."
+
+#: themes/brownie/theme.php:52 themes/ubuntu_brainstorm/theme.php:52
+msgid "Authorized comment HTML tags"
+msgstr "Auktoriserade HTML-taggar för kommentarer."
+
+#: themes/brownie/theme.php:53 themes/ubuntu_brainstorm/theme.php:53
+msgid "The authorized HTML tags to be used in idea comments."
+msgstr "Auktoriserade HTML-taggar för kommentarer."
+
+#: themes/brownie/theme.php:58 themes/ubuntu_brainstorm/theme.php:58
+msgid "Max visible lines of solutions"
+msgstr "Max antal synliga rader för lösningar."
+
+#: themes/brownie/theme.php:59 themes/ubuntu_brainstorm/theme.php:59
+msgid ""
+"The max number of lines of a solution to be shown by default. The rest can "
+"be seen by clicking an expand link."
+msgstr ""
+"Max antal rader för en lösning att visa som standard. Resterande rader kan "
+"ses genom att klicka på en expandera-länk."
+
+#: themes/brownie/theme.php:63 themes/ubuntu_brainstorm/theme.php:69
+msgid ""
+"<div style=\"font-size:1.6em; text-align:center\">\n"
+"Welcome to the $project_name$ IdeaTorrent website!\n"
+"</div>\n"
+"<br />\n"
+"\n"
+"<div style=\"font-size:1.2em\">\n"
+"Let's look at your request:\n"
+"<ul>\n"
+"<li>If your request is about something that is not working as expected, you "
+"should <b>not</b> post here, but rather use the $project_name$ bug "
+"tracker.</li>\n"
+"<li>If you are asking for support, you should post on the $project_name$ "
+"forums or mailing lists, <b>not</b> here.</li>\n"
+"</ul>\n"
+"But if it is a feature request or an idea for $project_name$, this is the "
+"right place to post.\n"
+"\n"
+"</div>"
+msgstr ""
+"<div style=\"font-size:1.6em; text-align:center\">\n"
+"Välkommen till $project_name$ IdeaTorrent webbsidan!\n"
+"</div>\n"
+"<br />\n"
+"\n"
+"<div style=\"font-size:1.2em\">\n"
+"Låt oss granska din idé:\n"
+"<ul>\n"
+"<li>Om din idé handlar om något som inte fungerar som förväntat skall du "
+"<b>inte</b> posta här. Använd istället felhanteringssystemet för "
+"$project_name$.</li>\n"
+"<li>Om du behöver hjälp skall du använda forumet eller e-postlistan för "
+"$project_name$, <b>inte</b> posta här</li>\n"
+"</ul>\n"
+"Men om det gäller ett förslag eller en idé för $project_name$, har du kommit "
+"rätt.\n"
+"\n"
+"</div>"
+
+#: themes/brownie/theme.php:77 themes/ubuntu_brainstorm/theme.php:83
+msgid "Idea submission guidelines"
+msgstr "Riktlinjer för idéer"
+
+#: themes/brownie/theme.php:78 themes/ubuntu_brainstorm/theme.php:84
+msgid ""
+"The text to show on the first page of idea submission. $project_name$ is "
+"replaced by the project name, $theme_path$ by the theme path"
+msgstr ""
+"Texten som skall visas på den första sidan när någon vill lämna en idé. "
+"$project_name$ ersätts med projektnamnet, $theme_path$ med sökvägen till "
+"temat."
+
+#: themes/brownie/theme.php:98 themes/brownie/menublock/default.php:134;137;137 themes/ubuntu_brainstorm/theme.php:104 themes/ubuntu_brainstorm/menublock/default.php:134;137;137
+msgid "Search..."
+msgstr "Sök..."
+
+#: themes/brownie/theme.php:99 themes/ubuntu_brainstorm/theme.php:105
+msgid "Updating..."
+msgstr "Uppdaterar..."
+
+#: themes/brownie/theme.php:100 themes/ubuntu_brainstorm/theme.php:106
+msgid "None found"
+msgstr "Inget hittades."
+
+#: themes/brownie/theme.php:109;127 themes/brownie/common/votebox.php:110;114;118 themes/ubuntu_brainstorm/theme.php:115;133 themes/ubuntu_brainstorm/common/votebox.php:110;114;118
+msgid "Promote this solution!"
+msgstr "Rösta på lösningen!"
+
+#: themes/brownie/theme.php:110;128 themes/brownie/common/votebox.php:131;135;139 themes/ubuntu_brainstorm/theme.php:116;134 themes/ubuntu_brainstorm/common/votebox.php:131;135;139
+msgid "Don't care"
+msgstr "Ingen åsikt"
+
+#: themes/brownie/theme.php:111;129 themes/brownie/common/votebox.php:153;157;161 themes/ubuntu_brainstorm/theme.php:117;135 themes/ubuntu_brainstorm/common/votebox.php:153;157;161
+msgid "Demote this solution!"
+msgstr "Rösta ner denna lösning!"
+
+#: themes/brownie/theme.php:112;130 themes/brownie/common/votebox.php:121 themes/ubuntu_brainstorm/theme.php:118;136 themes/ubuntu_brainstorm/common/votebox.php:121
+msgid "You promoted this solution"
+msgstr "Du röstade upp denna lösning."
+
+#: themes/brownie/theme.php:113;131 themes/brownie/common/votebox.php:142 themes/ubuntu_brainstorm/theme.php:119;137 themes/ubuntu_brainstorm/common/votebox.php:142
+msgid "You cast a blank vote"
+msgstr "Du röstade blankt."
+
+#: themes/brownie/theme.php:114;132 themes/brownie/common/votebox.php:164 themes/ubuntu_brainstorm/theme.php:120;138 themes/ubuntu_brainstorm/common/votebox.php:164
+msgid "You demoted this solution"
+msgstr "Du röstade ner denna lösning."
+
+#: themes/brownie/theme.php:115;133 themes/brownie/choice/item.php:295 themes/brownie/choicelist/default_item_v2.php:53 themes/ubuntu_brainstorm/theme.php:121;139 themes/ubuntu_brainstorm/choice/item.php:295 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:53
+msgid "Bookmark this idea"
+msgstr "Skapa ett bokmärke för denna idé"
+
+#: themes/brownie/theme.php:116;134 themes/brownie/choice/item.php:293 themes/brownie/choicelist/default_item_v2.php:51 themes/ubuntu_brainstorm/theme.php:122;140 themes/ubuntu_brainstorm/choice/item.php:293 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:51
+msgid "Remove the bookmark"
+msgstr "Ta bort bokmärket."
+
+#: themes/brownie/theme.php:119;150 themes/brownie/choicelist/default_item_solution.php:157 themes/brownie/choicelist/default_item_v2.php:158 themes/ubuntu_brainstorm/theme.php:125;156 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:157 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:158
+msgid "Delete"
+msgstr "Ta bort"
+
+#: themes/brownie/theme.php:120;151 themes/brownie/choicelist/default_item_v2.php:160 themes/ubuntu_brainstorm/theme.php:126;157 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:160
+msgid "Undelete"
+msgstr "Återskapa"
+
+#: themes/brownie/theme.php:140 themes/brownie/choice/item.php:324;352 themes/ubuntu_brainstorm/theme.php:146 themes/ubuntu_brainstorm/choice/item.php:324;352
+msgid "none"
+msgstr "inget"
+
+#: themes/brownie/theme.php:141 themes/ubuntu_brainstorm/theme.php:147
+msgid "Loading..."
+msgstr "Laddar..."
+
+#: themes/brownie/theme.php:142 themes/brownie/choice/edit.php:278 themes/brownie/choice/item.php:152 themes/brownie/common/logtable.php:164;286 themes/ubuntu_brainstorm/theme.php:148 themes/ubuntu_brainstorm/choice/edit.php:297 themes/ubuntu_brainstorm/choice/item.php:152 themes/ubuntu_brainstorm/common/logtable.php:164;286
+msgid "Nothing/Others"
+msgstr "Inget/Andra"
+
+#: themes/brownie/choice/default_comment.php:59 themes/ubuntu_brainstorm/choice/default_comment.php:59
+msgid "wrote on the !date at !time"
+msgstr "skrev på idén den !date kl. !time"
+
+#: themes/brownie/choice/default_comment.php:67 themes/ubuntu_brainstorm/choice/default_comment.php:67 views/admin/default.php:224;284
+msgid "delete"
+msgstr "radera"
+
+#: themes/brownie/choice/default_comment.php:77 themes/ubuntu_brainstorm/choice/default_comment.php:77
+msgid ""
+"Report as <a href=\"!link\">spam</a> / <a href=\"!link2\">offensive</a>"
+msgstr ""
+"Rapportera som <a href=\"!link\">spam</a> / <a href=\"!link2\">offensiv</a>"
+
+#: themes/brownie/choice/edit.php:86 themes/ubuntu_brainstorm/choice/edit.php:86
+msgid "Submit your idea (Step 3 of 3)"
+msgstr "Sänd din idé"
+
+#: themes/brownie/choice/edit.php:88 themes/brownie/choice/item.php:71 themes/brownie/choice/promote.php:67 themes/brownie/choice/report_duplicate.php:67 themes/ubuntu_brainstorm/choice/edit.php:88 themes/ubuntu_brainstorm/choice/item.php:71 themes/ubuntu_brainstorm/choice/promote.php:67 themes/ubuntu_brainstorm/choice/report_duplicate.php:67
+msgid "Idea #!number:"
+msgstr "Idé nummer #!number:"
+
+#: themes/brownie/choice/edit.php:140;189;399 themes/brownie/choice/item.php:111 themes/brownie/choice/promote.php:102 themes/brownie/choice/report_duplicate.php:105 themes/ubuntu_brainstorm/choice/edit.php:140;208;418 themes/ubuntu_brainstorm/choice/item.php:111 themes/ubuntu_brainstorm/choice/promote.php:102 themes/ubuntu_brainstorm/choice/report_duplicate.php:105
+msgid "Description"
+msgstr "Beskrivning"
+
+#: themes/brownie/choice/edit.php:141 themes/brownie/choice/item.php:112 themes/brownie/choice/promote.php:103 themes/brownie/choice/report_duplicate.php:106 themes/ubuntu_brainstorm/choice/edit.php:141 themes/ubuntu_brainstorm/choice/item.php:112 themes/ubuntu_brainstorm/choice/promote.php:103 themes/ubuntu_brainstorm/choice/report_duplicate.php:106
+msgid "Report duplicate"
+msgstr "Rapportera dubblett"
+
+#: themes/brownie/choice/edit.php:142 themes/brownie/choice/item.php:113 themes/brownie/choice/promote.php:104 themes/brownie/choice/report_duplicate.php:107 themes/ubuntu_brainstorm/choice/edit.php:142 themes/ubuntu_brainstorm/choice/item.php:113 themes/ubuntu_brainstorm/choice/promote.php:104 themes/ubuntu_brainstorm/choice/report_duplicate.php:107
+msgid "Help promote this idea!"
+msgstr "Hjälp till att marknadsföra denna idé!"
+
+#: themes/brownie/choice/edit.php:143 themes/brownie/choice/item.php:116 themes/brownie/choice/promote.php:107 themes/brownie/choice/report_duplicate.php:110 themes/ubuntu_brainstorm/choice/edit.php:143 themes/ubuntu_brainstorm/choice/item.php:116 themes/ubuntu_brainstorm/choice/promote.php:107 themes/ubuntu_brainstorm/choice/report_duplicate.php:110
+msgid "Edit"
+msgstr "Redigera"
+
+#: themes/brownie/choice/edit.php:167 themes/ubuntu_brainstorm/choice/edit.php:186
+msgid "Idea rationale: Why are you proposing this idea?"
+msgstr "Bakgrundsbeskrivning: Varför föreslår du denna idé?"
+
+#: themes/brownie/choice/edit.php:169 themes/ubuntu_brainstorm/choice/edit.php:188
+msgid "Idea rationale"
+msgstr "Bakgrundsbeskrivning"
+
+#: themes/brownie/choice/edit.php:178;391 themes/brownie/choice/submit_second_part.php:77 themes/brownie/common/duplicatetable.php:29 themes/ubuntu_brainstorm/choice/edit.php:197;410 themes/ubuntu_brainstorm/choice/submit_second_part.php:77 themes/ubuntu_brainstorm/common/duplicatetable.php:29
+msgid "Title"
+msgstr "Titel"
+
+#: themes/brownie/choice/edit.php:178 themes/ubuntu_brainstorm/choice/edit.php:197
+msgid "describe in a few words the idea rationale"
+msgstr "Beskriv i några få ord bakgrunden till idén."
+
+#: themes/brownie/choice/edit.php:189;424 themes/ubuntu_brainstorm/choice/edit.php:208;443
+msgid "describe what is the problem, why makes you submit this idea"
+msgstr "Beskriv problemet/vad som får dig att skicka denna idé"
+
+#: themes/brownie/choice/edit.php:204 themes/brownie/common/logtable.php:93 themes/ubuntu_brainstorm/choice/edit.php:223 themes/ubuntu_brainstorm/common/logtable.php:93
+msgid "Global category"
+msgstr "Global kategori"
+
+#: themes/brownie/choice/edit.php:212;255;304;354 themes/ubuntu_brainstorm/choice/edit.php:231;274;323;373
+msgid "Please select"
+msgstr "Vänligen välj"
+
+#: themes/brownie/choice/edit.php:245;294 themes/ubuntu_brainstorm/choice/edit.php:264;313 views/admin/default.php:206
+msgid "Category"
+msgstr "Kategori"
+
+#: themes/brownie/choice/edit.php:245 themes/brownie/common/logtable.php:95 themes/ubuntu_brainstorm/choice/edit.php:264 themes/ubuntu_brainstorm/common/logtable.php:95
+msgid "Related project"
+msgstr "Relaterade projekt."
+
+#: themes/brownie/choice/edit.php:333;457;462;480 themes/ubuntu_brainstorm/choice/edit.php:352;476;481;499
+msgid "Optional"
+msgstr "Valfri"
+
+#: themes/brownie/choice/edit.php:333 themes/brownie/choice/item.php:320 themes/brownie/common/logtable.php:103 themes/brownie/menublock/default.php:155 themes/ubuntu_brainstorm/choice/edit.php:352 themes/ubuntu_brainstorm/choice/item.php:320 themes/ubuntu_brainstorm/common/logtable.php:103 themes/ubuntu_brainstorm/menublock/default.php:155
+msgid "Tags"
+msgstr "Nyckelord"
+
+#: themes/brownie/choice/edit.php:355 themes/ubuntu_brainstorm/choice/edit.php:374
+msgid "A bug"
+msgstr "Ett fel"
+
+#: themes/brownie/choice/edit.php:356 themes/ubuntu_brainstorm/choice/edit.php:375
+msgid "An idea"
+msgstr "En idé"
+
+#: themes/brownie/choice/edit.php:380 themes/ubuntu_brainstorm/choice/edit.php:399
+msgid "Idea solutions"
+msgstr "Lösning"
+
+#: themes/brownie/choice/edit.php:382 themes/ubuntu_brainstorm/choice/edit.php:401
+msgid "Idea solution: What do you propose to solve this problem?"
+msgstr "idé: Vad föreslår du för att lösa detta problem?"
+
+#: themes/brownie/choice/edit.php:391;412 themes/ubuntu_brainstorm/choice/edit.php:410;431
+msgid "describe in a few words the idea solution"
+msgstr "Beskriv i några få ord din lösning"
+
+#: themes/brownie/choice/edit.php:399 themes/ubuntu_brainstorm/choice/edit.php:418
+msgid "describe how you want to solve the problem"
+msgstr "Beskriv hur du vill lösa detta problem"
+
+#: themes/brownie/choice/edit.php:412 themes/ubuntu_brainstorm/choice/edit.php:431
+msgid "Solution #!number Title"
+msgstr "Lösning #!number Title"
+
+#: themes/brownie/choice/edit.php:424 themes/ubuntu_brainstorm/choice/edit.php:443
+msgid "Solution #!number Description"
+msgstr "Lösning #!number Beskrivning"
+
+#: themes/brownie/choice/edit.php:457 themes/brownie/choice/item.php:532 themes/ubuntu_brainstorm/choice/edit.php:476 themes/ubuntu_brainstorm/choice/item.php:532
+msgid "Attachments"
+msgstr "Bilagor"
+
+#: themes/brownie/choice/edit.php:459 themes/ubuntu_brainstorm/choice/edit.php:478
+msgid ""
+"If the idea was already discussed on a ubuntuforums.org thread, you can link "
+"it here."
+msgstr ""
+"Om idén redan diskuterats på ubuntuforums.org så kan du länka till tråden "
+"här."
+
+#: themes/brownie/choice/edit.php:462 themes/ubuntu_brainstorm/choice/edit.php:481
+msgid "Ubuntuforums.org thread URL :"
+msgstr "URL till tråd på ubuntuforums.org"
+
+#: themes/brownie/choice/edit.php:476 themes/ubuntu_brainstorm/choice/edit.php:495
+msgid ""
+"If you know about a blueprint whose goal is to make this idea a reality, you "
+"can reference it here."
+msgstr ""
+"Om du känner till en blueprint vars mål är att förverkliga denna idé kan du "
+"länka till den här."
+
+#: themes/brownie/choice/edit.php:476 themes/ubuntu_brainstorm/choice/edit.php:495
+msgid "What is a blueprint?"
+msgstr "Vad är en blueprint?"
+
+#: themes/brownie/choice/edit.php:480 themes/ubuntu_brainstorm/choice/edit.php:499
+msgid "Blueprint URL"
+msgstr "URL för blueprint"
+
+#: themes/brownie/choice/edit.php:495 themes/ubuntu_brainstorm/choice/edit.php:514
+msgid "Developer comments (admin-only field)"
+msgstr "Utvecklarkommentarer (endast för administratörer)"
+
+#: themes/brownie/choice/edit.php:504 themes/brownie/choice/item.php:202 themes/ubuntu_brainstorm/choice/edit.php:523 themes/ubuntu_brainstorm/choice/item.php:202 views/admin/default.php:159;191 views/admin/editcategory.php:151 views/admin/editrelease.php:160
+msgid "Save"
+msgstr "Spara"
+
+#: themes/brownie/choice/edit.php:504 themes/ubuntu_brainstorm/choice/edit.php:523
+msgid "Submit!"
+msgstr "Skicka!"
+
+#: themes/brownie/choice/item.php:129 themes/brownie/choicelist/default_item_solution.php:114 themes/brownie/choicelist/default_item_v2.php:94 themes/ubuntu_brainstorm/choice/item.php:129 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:114 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:94
+msgid "Written by !name the !date at !time."
+msgstr "Skriven av !name den !date kl !time"
+
+#: themes/brownie/choice/item.php:141;172 themes/brownie/choicelist/default_item_v2.php:133 themes/ubuntu_brainstorm/choice/item.php:141;172 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:133
+msgid "Category: !cat."
+msgstr "Kategori: !cat"
+
+#: themes/brownie/choice/item.php:146 themes/ubuntu_brainstorm/choice/item.php:146
+msgid "Related project:"
+msgstr "Relaterade projekt:"
+
+#: themes/brownie/choice/item.php:161 themes/ubuntu_brainstorm/choice/item.php:161
+msgid "Edit the related project"
+msgstr "Ändra relaterade projekt."
+
+#: themes/brownie/choice/item.php:178 themes/ubuntu_brainstorm/choice/item.php:178
+msgid "Status:"
+msgstr "Status:"
+
+#: themes/brownie/choice/item.php:189 themes/ubuntu_brainstorm/choice/item.php:189 views/view.functions.php:168
+msgid "Deleted"
+msgstr "Borttagen"
+
+#: themes/brownie/choice/item.php:190 themes/ubuntu_brainstorm/choice/item.php:190 views/view.functions.php:205
+msgid "Awaiting moderation"
+msgstr "Väntar på moderation"
+
+#: themes/brownie/choice/item.php:192 themes/ubuntu_brainstorm/choice/item.php:192 views/view.functions.php:177
+msgid "Needs clarification"
+msgstr "Måste tydliggjöras."
+
+#: themes/brownie/choice/item.php:193 themes/ubuntu_brainstorm/choice/item.php:193 views/view.functions.php:197
+msgid "Blueprint approved"
+msgstr "Blueprint godkännd."
+
+#: themes/brownie/choice/item.php:194 themes/ubuntu_brainstorm/choice/item.php:194 views/view.functions.php:181
+msgid "In development"
+msgstr "Under utveckling"
+
+#: themes/brownie/choice/item.php:195 themes/ubuntu_brainstorm/choice/item.php:195 views/view.functions.php:185
+msgid "Implemented"
+msgstr "Genomförd"
+
+#: themes/brownie/choice/item.php:196 themes/brownie/choicelist/ideas_in_preparation.php:205 themes/ubuntu_brainstorm/choice/item.php:196 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:211 views/view.functions.php:193
+msgid "Already implemented"
+msgstr "Redan genomförd."
+
+#: themes/brownie/choice/item.php:197 themes/ubuntu_brainstorm/choice/item.php:197 views/view.functions.php:189
+msgid "Won't implement"
+msgstr "Kommer ej att genomföras"
+
+#: themes/brownie/choice/item.php:198 themes/ubuntu_brainstorm/choice/item.php:198
+msgid "Not an idea (e.g. bug)"
+msgstr "Inte en idé (e.g. en felrapport)."
+
+#: themes/brownie/choice/item.php:207 themes/ubuntu_brainstorm/choice/item.php:207
+msgid "Change the status"
+msgstr "Ändra status."
+
+#: themes/brownie/choice/item.php:220 themes/ubuntu_brainstorm/choice/item.php:220
+msgid ""
+"Report as <a href=\"!link\">spam</a> / <a href=\"!link2\">not an idea</a> / "
+"<a href=\"!link3\">in development</a> / <a href=\"!link4\">implemented</a>"
+msgstr ""
+"Rapportera som <a href=\"!link\">spam</a> / <a href=\"!link2\">ej en idé</a> "
+"/ <a href=\"!link3\">under utveckling</a> / <a href=\"!link4\">genomförd</a>"
+
+#: themes/brownie/choice/item.php:228 themes/ubuntu_brainstorm/choice/item.php:228
+msgid "Report as <a href=\"!link4\">implemented</a>"
+msgstr "Rapportera som <a href=\"!link4\">genomförd</a>"
+
+#: themes/brownie/choice/item.php:243 themes/ubuntu_brainstorm/choice/item.php:243
+msgid "Target release (admin only):"
+msgstr "Målutgåva"
+
+#: themes/brownie/choice/item.php:249 themes/brownie/common/logtable.php:178;300 themes/ubuntu_brainstorm/choice/item.php:249 themes/ubuntu_brainstorm/common/logtable.php:178;300
+msgid "None"
+msgstr "Ingen"
+
+#: themes/brownie/choice/item.php:276 themes/brownie/choicelist/default_item_solution.php:151 themes/brownie/choicelist/default_item_v2.php:152 themes/brownie/duplicate_reportlist/default_item.php:96 themes/ubuntu_brainstorm/choice/item.php:276 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:151 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:152 themes/ubuntu_brainstorm/duplicate_reportlist/default_item.php:96
+msgid "Mark as duplicate"
+msgstr "Markera som dubblett."
+
+#: themes/brownie/choice/item.php:305 themes/ubuntu_brainstorm/choice/item.php:305
+msgid "Rationale"
+msgstr "Bakgrund"
+
+#: themes/brownie/choice/item.php:307 themes/ubuntu_brainstorm/choice/item.php:307
+msgid "Edit the description"
+msgstr "Ändra beskrivningen"
+
+#: themes/brownie/choice/item.php:316 themes/brownie/duplicate_reportlist/default_item.php:106;178 themes/ubuntu_brainstorm/choice/item.php:316 themes/ubuntu_brainstorm/duplicate_reportlist/default_item.php:106;178
+msgid "No description"
+msgstr "Ingen beskrivning"
+
+#: themes/brownie/choice/item.php:341 themes/ubuntu_brainstorm/choice/item.php:341
+msgid "Edit the tags"
+msgstr "Ändra nyckelorden"
+
+#: themes/brownie/choice/item.php:348 themes/brownie/common/logtable.php:105 themes/brownie/menublock/default.php:171 themes/ubuntu_brainstorm/choice/item.php:348 themes/ubuntu_brainstorm/common/logtable.php:105 themes/ubuntu_brainstorm/menublock/default.php:171
+msgid "Admin tags"
+msgstr "Administratörsnyckelord."
+
+#: themes/brownie/choice/item.php:366 themes/ubuntu_brainstorm/choice/item.php:366
+msgid "Edit the admin tags"
+msgstr "Ändra Administratörsnyckelorden."
+
+#: themes/brownie/choice/item.php:416 themes/brownie/choicelist/default_item_v2.php:204 themes/brownie/common/logtable.php:129 themes/ubuntu_brainstorm/choice/item.php:416 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:204 themes/ubuntu_brainstorm/common/logtable.php:129
+msgid "Developer comments"
+msgstr "Utvecklarkommentarer."
+
+#: themes/brownie/choice/item.php:418 themes/ubuntu_brainstorm/choice/item.php:418
+msgid "Edit the developer comments"
+msgstr "Ändra utvecklarkommentarerna."
+
+#: themes/brownie/choice/item.php:449 themes/brownie/choicelist/default_item_v2.php:241 themes/brownie/duplicate_reportlist/default_item.php:115;187 themes/ubuntu_brainstorm/choice/item.php:449 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:241 themes/ubuntu_brainstorm/duplicate_reportlist/default_item.php:115;187
+msgid "No solutions."
+msgstr "Inga lösningsförslag."
+
+#: themes/brownie/choice/item.php:479 themes/ubuntu_brainstorm/choice/item.php:479
+msgid "Post a solution"
+msgstr "Skicka ett lösningsförslag."
+
+#: themes/brownie/choice/item.php:479;481 themes/ubuntu_brainstorm/choice/item.php:479;481
+msgid "Propose your solution"
+msgstr "Ange ditt lösningsförslag."
+
+#: themes/brownie/choice/item.php:488 themes/ubuntu_brainstorm/choice/item.php:488
+msgid "Post your solution"
+msgstr "Skicka ditt lösningsförslag"
+
+#: themes/brownie/choice/item.php:491 themes/ubuntu_brainstorm/choice/item.php:491
+msgid "Solution title"
+msgstr "Titel på lösningen"
+
+#: themes/brownie/choice/item.php:496 themes/ubuntu_brainstorm/choice/item.php:496
+msgid "Solution description"
+msgstr "Beskrivning av lösningen"
+
+#: themes/brownie/choice/item.php:548 themes/ubuntu_brainstorm/choice/item.php:548
+msgid "Blueprint"
+msgstr "Blueprint"
+
+#: themes/brownie/choice/item.php:548 themes/ubuntu_brainstorm/choice/item.php:548
+msgid "Information on this blueprint will be retrieved soon"
+msgstr "Information om denna blueprint kommer att hämtas snart."
+
+#: themes/brownie/choice/item.php:553 themes/ubuntu_brainstorm/choice/item.php:553
+msgid "Edit the blueprint attachment"
+msgstr "Ändra blueprint-bilagan."
+
+#: themes/brownie/choice/item.php:581 themes/ubuntu_brainstorm/choice/item.php:581
+msgid "Ubuntuforums.org thread #!number"
+msgstr "Tråd nummer #!number på ubuntuforums.org"
+
+#: themes/brownie/choice/item.php:586 themes/ubuntu_brainstorm/choice/item.php:586
+msgid "Edit the thread attachment"
+msgstr "Ändra trådbilagan"
+
+#: themes/brownie/choice/item.php:606 themes/ubuntu_brainstorm/choice/item.php:606
+msgid "No attachments."
+msgstr "Inga bilagor"
+
+#: themes/brownie/choice/item.php:615 themes/ubuntu_brainstorm/choice/item.php:615
+msgid "Attach a blueprint"
+msgstr "Bifoga en blueprint"
+
+#: themes/brownie/choice/item.php:618 themes/ubuntu_brainstorm/choice/item.php:618
+msgid "Attach a ubuntuforums.org thread"
+msgstr "Bifoga en tråd på ubuntuforums.org"
+
+#: themes/brownie/choice/item.php:634 themes/brownie/choicelist/ideas_in_preparation.php:206 themes/ubuntu_brainstorm/choice/item.php:634 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:212
+msgid "Duplicates"
+msgstr "Dubbletter"
+
+#: themes/brownie/choice/item.php:651 themes/ubuntu_brainstorm/choice/item.php:651
+msgid "Accepted"
+msgstr "Accepterade"
+
+#: themes/brownie/choice/item.php:653 themes/ubuntu_brainstorm/choice/item.php:653
+msgid "<a href=\"!link\">Idea #!number: !title</a> (!nbvotes votes)"
+msgstr "<a href=\"!link\">Idé #!number: !title</a> (!nbvotes röster)"
+
+#: themes/brownie/choice/item.php:679;681 themes/ubuntu_brainstorm/choice/item.php:679;681
+msgid "Report a duplicate and merge its votes to this idea"
+msgstr "Rapportera en dubblett och sammanfoga rösterna med denna idé"
+
+#: themes/brownie/choice/item.php:694 themes/ubuntu_brainstorm/choice/item.php:694
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: themes/brownie/choice/item.php:701 themes/ubuntu_brainstorm/choice/item.php:701
+msgid "No comments."
+msgstr "Inga kommentarer."
+
+#: themes/brownie/choice/item.php:724 themes/ubuntu_brainstorm/choice/item.php:724
+msgid "Post a comment"
+msgstr "Kommentera."
+
+#: themes/brownie/choice/item.php:724;733;740 themes/ubuntu_brainstorm/choice/item.php:724;733;740
+msgid "Post your comment"
+msgstr "Skicka din kommentar."
+
+#: themes/brownie/choice/log.php:69 themes/ubuntu_brainstorm/choice/log.php:69
+msgid "Idea #!number activity"
+msgstr "Idé #!number aktivitet"
+
+#: themes/brownie/choice/promote.php:118 themes/ubuntu_brainstorm/choice/promote.php:118
+msgid "Image links"
+msgstr "bildlänkar"
+
+#: themes/brownie/choice/promote.php:120 themes/ubuntu_brainstorm/choice/promote.php:120
+msgid ""
+"You like this idea? You want to help promote it across the web?<br />\n"
+"Use these images in your forum signature and in your website!"
+msgstr ""
+"Gillar du denna idé? Vill du hjälpa till att marknadsföra denna idé på "
+"webben?<br/>\n"
+"Använd dessa bilder i din forumsignatur och på din webbsida!"
+
+#: themes/brownie/choice/promote.php:130 themes/ubuntu_brainstorm/choice/promote.php:130
+msgid ", updated every day"
+msgstr ". uppdaterad varje dag."
+
+#: themes/brownie/choice/promote.php:142 themes/ubuntu_brainstorm/choice/promote.php:142
+msgid "HTML code (to use in your website)"
+msgstr "HTML.kod (att använda på din hemsida)"
+
+#: themes/brownie/choice/promote.php:143 themes/ubuntu_brainstorm/choice/promote.php:143
+msgid "BB code (to use in a forum)"
+msgstr "BB code (att använda i ett forum)"
+
+#: themes/brownie/choice/report_duplicate.php:119 themes/ubuntu_brainstorm/choice/report_duplicate.php:119
+msgid ""
+"If you have found a duplicate idea, and would like it to be merged, please "
+"submit the idea number below.  The admins will accept or reject the merge "
+"shortly.<br />\n"
+"You can use the search widget below to find more of them!"
+msgstr ""
+"Om du hittat en dubblett och skulle vilja att de slogs samman, vänligen "
+"skicka idéns nummer nedan. Administratörerna kommer att godkänna eller "
+"avvisa sammanslagningen innom kort.<br/>\n"
+"Du kan använda sökfunktionen nedan för att hitta fler!"
+
+#: themes/brownie/choice/report_duplicate.php:127 themes/ubuntu_brainstorm/choice/report_duplicate.php:127
+msgid "Duplicate idea number: "
+msgstr "Dubblett nummer: "
+
+#: themes/brownie/choice/report_duplicate.php:130 themes/ubuntu_brainstorm/choice/report_duplicate.php:130
+msgid "Submit"
+msgstr "Skicka"
+
+#: themes/brownie/choice/report_duplicate.php:154 themes/ubuntu_brainstorm/choice/report_duplicate.php:154
+msgid "The following duplicates have already been proposed:"
+msgstr "Följande dubbletter har redan föreslagits:"
+
+#: themes/brownie/choice/report_duplicate.php:165;174;183 themes/ubuntu_brainstorm/choice/report_duplicate.php:165;174;183
+msgid "Idea #!number: !title"
+msgstr "Idé #!number: !title"
+
+#: themes/brownie/choice/report_duplicate.php:219 themes/brownie/choice/submit_second_part.php:81 themes/brownie/choicelist/default_item_v2.php:308 themes/ubuntu_brainstorm/choice/report_duplicate.php:219 themes/ubuntu_brainstorm/choice/submit_second_part.php:81 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:308
+msgid "Check for duplicates"
+msgstr "Sök efter dubbletter"
+
+#: themes/brownie/choice/submit_first_part.php:43 themes/ubuntu_brainstorm/choice/submit_first_part.php:43
+msgid "Submit your idea (Step 1 of 3)"
+msgstr "Skicka din idé (Steg 1 av 3)"
+
+#: themes/brownie/choice/submit_first_part.php:75 themes/brownie/choice/submit_second_part.php:107 themes/ubuntu_brainstorm/choice/submit_first_part.php:75 themes/ubuntu_brainstorm/choice/submit_second_part.php:107
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: themes/brownie/choice/submit_second_part.php:43 themes/ubuntu_brainstorm/choice/submit_second_part.php:43
+msgid "Submit your idea (Step 2 of 3)"
+msgstr "Skicka din idé (Steg 2 av 3)"
+
+#: themes/brownie/choice/submit_second_part.php:73 themes/ubuntu_brainstorm/choice/submit_second_part.php:73
+msgid ""
+"Please describe your idea in a few words, for example, \"audio preview in "
+"Nautilus\":"
+msgstr ""
+"Beskriv din idé i några få ord. Till exempel, \"förhandsgranskning av ljud i "
+"Nautilus\":"
+
+#: themes/brownie/choice/submit_second_part.php:87 themes/ubuntu_brainstorm/choice/submit_second_part.php:87
+msgid "Possible duplicates"
+msgstr "Eventuella dubbletter:"
+
+#: themes/brownie/choice/submit_second_part.php:103 themes/ubuntu_brainstorm/choice/submit_second_part.php:103
+msgid ""
+"Please look at these ideas. If you have not found an idea similar to the one "
+"you want to submit, please continue."
+msgstr ""
+"Vänligen granska dessa idéer. Om du inte hittat en idé som liknar den du "
+"vill skicka kan du gå vidare."
+
+#: themes/brownie/choicelist/default_item_solution.php:78 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:78
+msgid "Selected solution (#!number):"
+msgstr "Valda lösningar (#!number):"
+
+#: themes/brownie/choicelist/default_item_solution.php:84;89 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:84;89
+msgid "Solution #!number:"
+msgstr "Lösning#!number:"
+
+#: themes/brownie/choicelist/default_item_solution.php:100 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:100
+msgid "Edit the solution"
+msgstr "Ändra lösningen"
+
+#: themes/brownie/choicelist/default_item_solution.php:133 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:133
+msgid ""
+"Report as <a href=\"!spamlink\">spam</a> / <a "
+"href=\"!irrelevancelink\">irrelevant</a>"
+msgstr ""
+"Rapportera som <a href=\"!spamlink\">spam</a> / <a "
+"href=\"!irrelevancelink\">irrelevant</a>"
+
+#: themes/brownie/choicelist/default_item_solution.php:149 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:149
+msgid "Mark as duplicate of solution #"
+msgstr "Markera som dubblett av lösning #"
+
+#: themes/brownie/choicelist/default_item_solution.php:156 themes/ubuntu_brainstorm/choicelist/default_item_solution.php:156
+msgid "Delete rationale&lt;-&gt;solution link"
+msgstr "Ta bort länk mellan bakgrundsbeskrivning&lt;-&gt;lösning."
+
+#: themes/brownie/choicelist/default_item_v2.php:40;40 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:40;40
+msgid "New idea"
+msgstr "Ny idé"
+
+#: themes/brownie/choicelist/default_item_v2.php:43;43 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:43;43
+msgid "New comment"
+msgstr "Ny kommentar"
+
+#: themes/brownie/choicelist/default_item_v2.php:46;46 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:46;46
+msgid "Edited idea"
+msgstr "Ändrad idé"
+
+#: themes/brownie/choicelist/default_item_v2.php:105 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:105
+msgid "Global category: !cat."
+msgstr "Global kategori: !cat."
+
+#: themes/brownie/choicelist/default_item_v2.php:116 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:116
+msgid "Related project: !project."
+msgstr "Relaterat projekt: !project."
+
+#: themes/brownie/choicelist/default_item_v2.php:147 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:147
+msgid "Mark as duplicate of idea #"
+msgstr "Markera som dubblett av idé #"
+
+#: themes/brownie/choicelist/default_item_v2.php:308 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:308
+msgid "Search duplicates"
+msgstr "Sök dubbletter"
+
+#: themes/brownie/choicelist/default_item_v2.php:341 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:341
+msgid "See the !count comments or propose a solution"
+msgstr "Se !count kommentarer eller skapa ett lösningsförslag."
+
+#: themes/brownie/choicelist/default_item_v2.php:345 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:345
+msgid "(latest comment the !date at !time) "
+msgstr "(senaste kommentar den !date kl. !time) "
+
+#: themes/brownie/choicelist/default_item_v2.php:351 themes/ubuntu_brainstorm/choicelist/default_item_v2.php:351
+msgid "Add a comment or propose a solution"
+msgstr "Kommentera eller lägg till ett lösningsförslag"
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:68 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:68
+msgid ""
+"Here are the ideas about !project that are currently being implemented with "
+"no milestone set."
+msgstr ""
+"Här är idéerna för projektet !project som är under utveckling utan milsten."
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:76 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:76
+msgid ""
+"Here are the ideas about !project that are currently being implemented."
+msgstr "Här är idéerna för projektet !project som är under utveckling."
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:85;95 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:85;95
+msgid ""
+"Here are the ideas about !project that are currently being implemented for "
+"the !release release."
+msgstr ""
+"Här är idéerna för projektet !project som är under utveckling för utgåvan "
+"!release."
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:221 themes/brownie/choicelist/implemented_ideas_v2.php:222 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:221 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:222
+msgid "No milestone"
+msgstr "Ingen milsten"
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:241 themes/brownie/choicelist/implemented_ideas_v2.php:242 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:241 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:242
+msgid "Latest additions"
+msgstr "Senast tillagda"
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:242 themes/brownie/choicelist/implemented_ideas_v2.php:243 themes/brownie/choicelist/user_items_v2.php:253 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:242 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:243 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:253
+msgid "Most popular"
+msgstr "Mest populära"
+
+#: themes/brownie/choicelist/ideas_in_development_v2.php:262 themes/brownie/choicelist/ideas_in_preparation.php:247 themes/brownie/choicelist/implemented_ideas_v2.php:263 themes/brownie/choicelist/popular_ideas.php:237 themes/brownie/choicelist/user_items_v2.php:276 themes/brownie/duplicate_reportlist/default.php:111 themes/ubuntu_brainstorm/choicelist/ideas_in_development_v2.php:262 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:253 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:263 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:242 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:276 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:111
+msgid "No entries."
+msgstr "Inga poster."
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:65 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:65
+msgid ""
+"Here are ideas about  !project that have been marked as duplicates by the "
+"moderators. "
+msgstr ""
+"Här är idéerna för projektet !project som markerats som dubbletter av "
+"moderatorerna. "
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:74 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:74
+msgid ""
+"Here are the newly submitted ideas about !project that are awaiting "
+"moderator validation before going to the \"popular ideas\" area."
+msgstr ""
+"Här är de nyligen insända idéerna för projektet !project som är väntar på "
+"att godkännas av moderatorerna innan de går till avdelningen \"populära "
+"idéer\""
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:84 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:90
+msgid ""
+"Here are ideas about  !project that have been marked as not following the "
+"guidelines by the moderators."
+msgstr ""
+"Här är idéerna för projektet !project som markerats som att de inte följer "
+"riktlinjerna av moderatorerna."
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:94 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:100
+msgid ""
+"Here are ideas about  !project that have been marked as already implemented "
+"by the moderators."
+msgstr ""
+"Här är idéerna för projektet !project som markerats som redan genomförda av "
+"moderatorerna."
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:203 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:209
+msgid "Valid candidates"
+msgstr "Giltiga kandidater"
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:204 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:210
+msgid "Invalid ideas"
+msgstr "Ogiltiga idéer"
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:225 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:231
+msgid "Latest activity"
+msgstr "Senaste aktivitet."
+
+#: themes/brownie/choicelist/ideas_in_preparation.php:228 themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:234
+msgid "Latest idea submissions"
+msgstr "Senast skickade idéer."
+
+#: themes/brownie/choicelist/implemented_ideas_v2.php:68 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:68
+msgid "Here are the implemented !project ideas with no milestone set."
+msgstr ""
+"Här är de genomförda idéerna för projektet !project som inte har någon "
+"milsten."
+
+#: themes/brownie/choicelist/implemented_ideas_v2.php:76 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:76
+msgid "Here are the implemented !project ideas."
+msgstr "Här är idéerna för projektet !project som genomförts."
+
+#: themes/brownie/choicelist/implemented_ideas_v2.php:85;95 themes/ubuntu_brainstorm/choicelist/implemented_ideas_v2.php:85;95
+msgid "Here are the implemented !project ideas for the !release release."
+msgstr ""
+"Här är idéerna för projektet !project som är genomförts för utgåvan !release"
+
+#: themes/brownie/choicelist/popular_ideas.php:49 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:49
+msgid "Here are the latest ideas about !project that have been approved. "
+msgstr "Här är de senaste idéerna för projektet !project som godkännts. "
+
+#: themes/brownie/choicelist/popular_ideas.php:58 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:58
+msgid "Here are today's most popular ideas about !project. "
+msgstr "Här är dagens mest poppulära idéer för projektet !project. "
+
+#: themes/brownie/choicelist/popular_ideas.php:67 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:67
+msgid "Here are this week's most popular ideas about !project. "
+msgstr "Här är veckans mest poppulära idéer för projektet !project. "
+
+#: themes/brownie/choicelist/popular_ideas.php:76 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:76
+msgid "Here are this month's most popular ideas about !project. "
+msgstr "Här är månadens mest poppulära idéer för projektet !project. "
+
+#: themes/brownie/choicelist/popular_ideas.php:85 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:90
+msgid "Here are the last 6 months most popular ideas about !project. "
+msgstr ""
+"Här är de sex senaste månadernas mest poppulära idéer för projektet "
+"!project. "
+
+#: themes/brownie/choicelist/popular_ideas.php:94 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:99
+msgid "Here are the most popular ideas ever about !project. "
+msgstr "Här är de mest poppulära idéer för projektet !project någonsin. "
+
+#: themes/brownie/choicelist/popular_ideas.php:103 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:108
+msgid "Here are the latest commented ideas about !project. "
+msgstr "Här är de senast kommenterade idéerna för projektet !project. "
+
+#: themes/brownie/choicelist/popular_ideas.php:112 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:117
+msgid "Here are random ideas about !project. "
+msgstr "Här är slumpmässiga idéer för projektet !project. "
+
+#: themes/brownie/choicelist/popular_ideas.php:211 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:216
+msgid "Latest"
+msgstr "Senaste"
+
+#: themes/brownie/choicelist/popular_ideas.php:212 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:217
+msgid "Most popular in 24 Hours"
+msgstr "Mest poppulära under 24 timmar."
+
+#: themes/brownie/choicelist/popular_ideas.php:213 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:218
+msgid "Most popular in 7 days"
+msgstr "Mest poppulära under 7 dagar."
+
+#: themes/brownie/choicelist/popular_ideas.php:214 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:219
+msgid "Most popular in 30 days"
+msgstr "Mest poppulära under 30 dagar."
+
+#: themes/brownie/choicelist/popular_ideas.php:215 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:220
+msgid "Most popular in 6 months"
+msgstr "Mest poppulära under 6 månader"
+
+#: themes/brownie/choicelist/popular_ideas.php:216 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:221
+msgid "Most popular ever"
+msgstr "Mest poppulära någonsin."
+
+#: themes/brownie/choicelist/popular_ideas.php:218 themes/ubuntu_brainstorm/choicelist/popular_ideas.php:223
+msgid "Random"
+msgstr "Slumpmässiga"
+
+#: themes/brownie/choicelist/user_items_v2.php:174 themes/brownie/user/default.php:139 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:174 themes/ubuntu_brainstorm/user/default.php:139
+msgid "My dashboard on !relation (!subcat)"
+msgstr "Min kontrollpanel för !relation (!subcat)"
+
+#: themes/brownie/choicelist/user_items_v2.php:178 themes/brownie/user/default.php:143 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:178 themes/ubuntu_brainstorm/user/default.php:143
+msgid "My dashboard on !relation"
+msgstr "Min kontrollpanel for !relation"
+
+#: themes/brownie/choicelist/user_items_v2.php:182 themes/brownie/user/default.php:147 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:182 themes/ubuntu_brainstorm/user/default.php:147
+msgid "My dashboard on the !category category"
+msgstr "Min kontrollpanel for kategorin !category"
+
+#: themes/brownie/choicelist/user_items_v2.php:191 themes/brownie/user/default.php:156 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:191 themes/ubuntu_brainstorm/user/default.php:156
+msgid "Contributor !name on !relation (!subcat)"
+msgstr "Användare !name för !relation (!subcat) Nuvanande Svensk:"
+
+#: themes/brownie/choicelist/user_items_v2.php:196 themes/brownie/user/default.php:161 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:196 themes/ubuntu_brainstorm/user/default.php:161
+msgid "Contributor !name on !relation"
+msgstr "Användare !name om !relation"
+
+#: themes/brownie/choicelist/user_items_v2.php:201 themes/brownie/user/default.php:166 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:201 themes/ubuntu_brainstorm/user/default.php:166
+msgid "Contributor !name on the !category category"
+msgstr "Användare !name för kategorin !category"
+
+#: themes/brownie/choicelist/user_items_v2.php:227 themes/brownie/user/default.php:198 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:227 themes/ubuntu_brainstorm/user/default.php:198
+msgid "My ideas"
+msgstr "Mina idéer"
+
+#: themes/brownie/choicelist/user_items_v2.php:227 themes/brownie/user/default.php:198 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:227 themes/ubuntu_brainstorm/user/default.php:198
+msgid "Ideas"
+msgstr "Idéer"
+
+#: themes/brownie/choicelist/user_items_v2.php:228 themes/brownie/user/default.php:200 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:228 themes/ubuntu_brainstorm/user/default.php:200
+msgid "My solutions"
+msgstr "Mina lösningar"
+
+#: themes/brownie/choicelist/user_items_v2.php:228 themes/brownie/common/logtable.php:110;119 themes/brownie/user/default.php:200 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:228 themes/ubuntu_brainstorm/common/logtable.php:110;119 themes/ubuntu_brainstorm/user/default.php:200
+msgid "Solutions"
+msgstr "Lösningar"
+
+#: themes/brownie/choicelist/user_items_v2.php:229 themes/brownie/user/default.php:202 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:229 themes/ubuntu_brainstorm/user/default.php:202
+msgid "Ideas I promoted"
+msgstr "Idéer jag röstat för"
+
+#: themes/brownie/choicelist/user_items_v2.php:229 themes/brownie/user/default.php:202 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:229 themes/ubuntu_brainstorm/user/default.php:202
+msgid "Ideas promoted"
+msgstr "Idéer jag röstat för"
+
+#: themes/brownie/choicelist/user_items_v2.php:230 themes/brownie/user/default.php:204 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:230 themes/ubuntu_brainstorm/user/default.php:204
+msgid "Ideas I demoted"
+msgstr "Idéer jag röstat emot"
+
+#: themes/brownie/choicelist/user_items_v2.php:230 themes/brownie/user/default.php:204 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:230 themes/ubuntu_brainstorm/user/default.php:204
+msgid "Ideas demoted"
+msgstr "Idéer jag röstat emot"
+
+#: themes/brownie/choicelist/user_items_v2.php:231 themes/brownie/user/default.php:206 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:231 themes/ubuntu_brainstorm/user/default.php:206
+msgid "Ideas I commented"
+msgstr "Idéer jag kommenterat"
+
+#: themes/brownie/choicelist/user_items_v2.php:231 themes/brownie/user/default.php:206 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:231 themes/ubuntu_brainstorm/user/default.php:206
+msgid "Ideas commented"
+msgstr "Idéer jag kommenterat"
+
+#: themes/brownie/choicelist/user_items_v2.php:232 themes/brownie/user/default.php:208 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:232 themes/ubuntu_brainstorm/user/default.php:208
+msgid "My bookmarks"
+msgstr "Mina bokmärken"
+
+#: themes/brownie/choicelist/user_items_v2.php:232 themes/brownie/user/default.php:208 themes/ubuntu_brainstorm/choicelist/user_items_v2.php:232 themes/ubuntu_brainstorm/user/default.php:208
+msgid "Ideas bookmarked"
+msgstr "Bokmärken"
+
+#: themes/brownie/common/approvalbox.php:36 themes/ubuntu_brainstorm/common/approvalbox.php:36
+msgid "Approvals"
+msgstr "Godkännanden"
+
+#: themes/brownie/common/approvalbox.php:48 themes/ubuntu_brainstorm/common/approvalbox.php:48
+msgid "Approve the idea"
+msgstr "Gådkänn idén"
+
+#: themes/brownie/common/approvalbox.php:51 themes/ubuntu_brainstorm/common/approvalbox.php:51
+msgid "You already approved the idea"
+msgstr "Du har redan godkännt idén"
+
+#: themes/brownie/common/approvalbox.php:65;68 themes/ubuntu_brainstorm/common/approvalbox.php:65;68
+msgid "Mark as invalid idea"
+msgstr "Markera som ogiltig idé"
+
+#: themes/brownie/common/approvalbox.php:82;85 themes/brownie/reportlist/process_reportlist.php:86 themes/ubuntu_brainstorm/common/approvalbox.php:82;85 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:86
+msgid "Mark as already implemented"
+msgstr "Markera som redan genomförd"
+
+#: themes/brownie/common/duplicatetable.php:29 themes/ubuntu_brainstorm/common/duplicatetable.php:29
+msgid "Number"
+msgstr "Nummer"
+
+#: themes/brownie/common/duplicatetable.php:29 themes/ubuntu_brainstorm/common/duplicatetable.php:29
+msgid "Votes"
+msgstr "Röster"
+
+#: themes/brownie/common/duplicatetable.php:29 themes/brownie/common/logtable.php:31 themes/ubuntu_brainstorm/common/duplicatetable.php:29 themes/ubuntu_brainstorm/common/logtable.php:31
+msgid "Date"
+msgstr "Datum"
+
+#: themes/brownie/common/duplicatetable.php:29 themes/brownie/common/logtable.php:91 themes/ubuntu_brainstorm/common/duplicatetable.php:29 themes/ubuntu_brainstorm/common/logtable.php:91
+msgid "Status"
+msgstr "Status"
+
+#: themes/brownie/common/duplicatetable.php:29 themes/ubuntu_brainstorm/common/duplicatetable.php:29
+msgid "Relevance"
+msgstr "Relevans"
+
+#: themes/brownie/common/ideastatusbar.php:39 themes/ubuntu_brainstorm/common/ideastatusbar.php:39
+msgid ""
+"This idea is a duplicate of <a href=\"!idealink\">Idea #!number: "
+"!ideatitle</a>."
+msgstr ""
+"Denna idé är en dubblett av <a href=\"!idealink\">Idé #!number: "
+"!ideatitle</a>."
+
+#: themes/brownie/common/ideastatusbar.php:47 themes/ubuntu_brainstorm/common/ideastatusbar.php:47
+msgid "Unduplicate this idea"
+msgstr "Ta bort dubblettstatusen"
+
+#: themes/brownie/common/ideastatusbar.php:54 themes/ubuntu_brainstorm/common/ideastatusbar.php:54
+msgid "This idea was marked as needing a more complete blueprint the !date."
+msgstr ""
+"Denna idé markerades som att den behöver en mer komplett blueprint den !date."
+
+#: themes/brownie/common/ideastatusbar.php:59 themes/ubuntu_brainstorm/common/ideastatusbar.php:62
+msgid "This idea is marked as needing a more complete blueprint."
+msgstr "Denna idé markerades som att den behöver en mer komplett blueprint."
+
+#: themes/brownie/common/ideastatusbar.php:67 themes/ubuntu_brainstorm/common/ideastatusbar.php:73
+msgid "This idea was marked as being in development the !date."
+msgstr "Denna idé markerades som att den är under utveckling den !date."
+
+#: themes/brownie/common/ideastatusbar.php:72 themes/ubuntu_brainstorm/common/ideastatusbar.php:78
+msgid "This idea is marked as being in development."
+msgstr "Denna idé är markerad som att den är under utveckling."
+
+#: themes/brownie/common/ideastatusbar.php:77 themes/ubuntu_brainstorm/common/ideastatusbar.php:83
+msgid "Target release: !target."
+msgstr "Målutgåva: !target."
+
+#: themes/brownie/common/ideastatusbar.php:84 themes/ubuntu_brainstorm/common/ideastatusbar.php:90
+msgid "This idea was marked as implemented the !date."
+msgstr "Denna idé markerades som genomförd den !date."
+
+#: themes/brownie/common/ideastatusbar.php:89 themes/ubuntu_brainstorm/common/ideastatusbar.php:95
+msgid "This idea is marked as implemented."
+msgstr "Denna idé är markerad som genomförd."
+
+#: themes/brownie/common/ideastatusbar.php:94;121 themes/ubuntu_brainstorm/common/ideastatusbar.php:100;127
+msgid "Available starting !target."
+msgstr "Tillgänglig från !target."
+
+#: themes/brownie/common/ideastatusbar.php:101 themes/ubuntu_brainstorm/common/ideastatusbar.php:107
+msgid ""
+"This idea was marked as being not considered for implementation the !date."
+msgstr "Denna idé markerades som ej accepterad för genomförande den !date."
+
+#: themes/brownie/common/ideastatusbar.php:105 themes/ubuntu_brainstorm/common/ideastatusbar.php:111
+msgid "This idea is marked as being not considered for implementation."
+msgstr "Denna idé är markerad som ej accepterad för genomförande"
+
+#: themes/brownie/common/ideastatusbar.php:111 themes/ubuntu_brainstorm/common/ideastatusbar.php:117
+msgid "This idea was marked as already implemented the !date."
+msgstr "Denna idé markerades som redan genomförd den !date."
+
+#: themes/brownie/common/ideastatusbar.php:116 themes/ubuntu_brainstorm/common/ideastatusbar.php:122
+msgid "This idea is marked as already implemented."
+msgstr "Denna idé är markerad som redan genomförd."
+
+#: themes/brownie/common/ideastatusbar.php:128 themes/ubuntu_brainstorm/common/ideastatusbar.php:134
+msgid "This idea was marked as having a complete blueprint the !date."
+msgstr ""
+"Denna idé markerades som att den har en komplett blueprint den !date."
+
+#: themes/brownie/common/ideastatusbar.php:133 themes/ubuntu_brainstorm/common/ideastatusbar.php:142
+msgid "This idea is marked as having a complete blueprint."
+msgstr "Denna idén är markerad som att den har en komplett blueprint."
+
+#: themes/brownie/common/ideastatusbar.php:140 themes/ubuntu_brainstorm/common/ideastatusbar.php:152
+msgid "This entry was marked as not being an idea the !date."
+msgstr "Detta inlägg blev markerad som ej en idé den !date"
+
+#: themes/brownie/common/ideastatusbar.php:145 themes/ubuntu_brainstorm/common/ideastatusbar.php:159
+msgid "This entry is marked as not being an idea."
+msgstr "Detta inlägg är markerat som ej en ideé."
+
+#: themes/brownie/common/ideastatusbar.php:151 themes/ubuntu_brainstorm/common/ideastatusbar.php:167
+msgid ""
+"This idea is awaiting moderator approval before going to the <a "
+"href=\"!link\">popular ideas area</a>."
+msgstr ""
+"Denna idé väntar på att em moderator skall godkänna den innan den går till "
+"arean <a href=\"!link\">poppulära idéer</a>."
+
+#: themes/brownie/common/logtable.php:36 themes/ubuntu_brainstorm/common/logtable.php:36
+msgid "Who"
+msgstr "Vem"
+
+#: themes/brownie/common/logtable.php:38 themes/ubuntu_brainstorm/common/logtable.php:38
+msgid "Where"
+msgstr "Var"
+
+#: themes/brownie/common/logtable.php:42 themes/ubuntu_brainstorm/common/logtable.php:42
+msgid "What changed"
+msgstr "Vad som ändrades"
+
+#: themes/brownie/common/logtable.php:45 themes/ubuntu_brainstorm/common/logtable.php:45
+msgid "Old value"
+msgstr "Gammalt värde"
+
+#: themes/brownie/common/logtable.php:48 themes/ubuntu_brainstorm/common/logtable.php:48
+msgid "New value"
+msgstr "Nytt värde"
+
+#: themes/brownie/common/logtable.php:75 themes/ubuntu_brainstorm/common/logtable.php:75
+msgid "<a href=\"!link\">Idea #!number</a>"
+msgstr "<a href=\"!link\">Idé #!number</a>"
+
+#: themes/brownie/common/logtable.php:87 themes/ubuntu_brainstorm/common/logtable.php:87
+msgid "Rationale title"
+msgstr "Bakgrundstitel"
+
+#: themes/brownie/common/logtable.php:89 themes/ubuntu_brainstorm/common/logtable.php:89
+msgid "Rationale description"
+msgstr "Bakgrundsbeskrivning"
+
+#: themes/brownie/common/logtable.php:97 themes/ubuntu_brainstorm/common/logtable.php:97
+msgid "Project category"
+msgstr "Projektkategori"
+
+#: themes/brownie/common/logtable.php:99 themes/ubuntu_brainstorm/common/logtable.php:99
+msgid "Target release"
+msgstr "Målutgåva"
+
+#: themes/brownie/common/logtable.php:101 themes/ubuntu_brainstorm/common/logtable.php:101
+msgid "Duplicate link"
+msgstr "Dubblettlänk"
+
+#: themes/brownie/common/logtable.php:113;122 themes/ubuntu_brainstorm/common/logtable.php:113;122
+msgid "Solution #!number links"
+msgstr "Lösning #!number länkar"
+
+#: themes/brownie/common/logtable.php:125 themes/ubuntu_brainstorm/common/logtable.php:125
+msgid "Comment added"
+msgstr "Kommentar tillagd"
+
+#: themes/brownie/common/logtable.php:127 themes/ubuntu_brainstorm/common/logtable.php:127
+msgid "Comment deleted"
+msgstr "Kommentar borttagen"
+
+#: themes/brownie/common/logtable.php:131 themes/ubuntu_brainstorm/common/logtable.php:131
+msgid "Moderator approval"
+msgstr "Godkännd av moderator"
+
+#: themes/brownie/common/logtable.php:133 themes/ubuntu_brainstorm/common/logtable.php:133
+msgid "Solution #!number title"
+msgstr "Lösning #!number titel"
+
+#: themes/brownie/common/logtable.php:135 themes/ubuntu_brainstorm/common/logtable.php:135
+msgid "Solution #!number description"
+msgstr "Lösning #!number beskrivning"
+
+#: themes/brownie/common/logtable.php:157;171;279;293 themes/ubuntu_brainstorm/common/logtable.php:157;171;279;293
+msgid "Others"
+msgstr "Övriga"
+
+#: themes/brownie/common/logtable.php:185;307 themes/ubuntu_brainstorm/common/logtable.php:185;307
+msgid "Not a duplicate"
+msgstr "Ej en dubblett"
+
+#: themes/brownie/common/logtable.php:187;309 themes/ubuntu_brainstorm/common/logtable.php:187;309
+msgid "<a href=\"!link\">Idea #!number: !title</a>"
+msgstr "<a href=\"!link\">Idé #!number: !title</a>"
+
+#: themes/brownie/common/logtable.php:217;328 themes/ubuntu_brainstorm/common/logtable.php:217;328
+msgid "<b>Solution #!number: !title</b><br />!description"
+msgstr "<b>Lösning #!number: !title</b><br />!description"
+
+#: themes/brownie/common/logtable.php:227 themes/ubuntu_brainstorm/common/logtable.php:227
+msgid "Link to <a href=\"!link\">idea #!number: !title</a>"
+msgstr "Länk till <a href=\"!link\">idé #!number: !title</a>"
+
+#: themes/brownie/common/logtable.php:338 themes/ubuntu_brainstorm/common/logtable.php:338
+msgid "New link to <a href=\"!link\">idea #!number: !title</a>"
+msgstr "Ny länk till <a href=\"!link\">idé #!number: !title</a>"
+
+#: themes/brownie/common/navigationtopbar.php:64 themes/ubuntu_brainstorm/common/navigationtopbar.php:64
+msgid "All"
+msgstr "Alla"
+
+#: themes/brownie/common/navigationtopbar.php:76 themes/ubuntu_brainstorm/common/navigationtopbar.php:76 views/admin/default.php:103 views/admin/editcategory.php:103 views/admin/editrelease.php:104
+msgid "Projects"
+msgstr "Projekt"
+
+#: themes/brownie/common/navigationtopbar.php:123 themes/ubuntu_brainstorm/common/navigationtopbar.php:123
+msgid "Project categories"
+msgstr "Projektkategorier"
+
+#: themes/brownie/common/navigationtopbar.php:130 themes/ubuntu_brainstorm/common/navigationtopbar.php:130
+msgid "Global categories"
+msgstr "Globala kategorier"
+
+#: themes/brownie/common/navigationtopbar.php:136 themes/ubuntu_brainstorm/common/navigationtopbar.php:136
+msgid "All categories"
+msgstr "Alla kategorier"
+
+#: themes/brownie/common/pagination.php:45 themes/ubuntu_brainstorm/common/pagination.php:45
+msgid "Previous"
+msgstr "Föregående"
+
+#: themes/brownie/common/pagination.php:107 themes/ubuntu_brainstorm/common/pagination.php:107
+msgid "Next"
+msgstr "Nästa"
+
+#: themes/brownie/common/votebox.php:45 themes/ubuntu_brainstorm/common/votebox.php:45
+msgid "votes"
+msgstr "röster"
+
+#: themes/brownie/common/votebox.php:56 themes/ubuntu_brainstorm/common/votebox.php:56
+msgid "!promotions promotions / !dontcare don't care / !demotions demotions"
+msgstr ""
+"!promotions röster för / !dontcare blankröster / !demotions röster emot"
+
+#: themes/brownie/common/votebox.php:174 themes/ubuntu_brainstorm/common/votebox.php:174
+msgid "Duplicate idea"
+msgstr "Dubblett"
+
+#: themes/brownie/common/votebox.php:186 themes/ubuntu_brainstorm/common/votebox.php:186
+msgid "Solution in development"
+msgstr "Lösning under utveckling"
+
+#: themes/brownie/common/votebox.php:191;210 themes/ubuntu_brainstorm/common/votebox.php:191;210
+msgid "This solution was not selected"
+msgstr "Lösningen valdes inte"
+
+#: themes/brownie/common/votebox.php:205 themes/ubuntu_brainstorm/common/votebox.php:205
+msgid "Implemented Solution"
+msgstr "Genomförd Lösning"
+
+#: themes/brownie/common/votebox.php:218 themes/ubuntu_brainstorm/common/votebox.php:218
+msgid "Idea already done"
+msgstr "Idén redan genomförd"
+
+#: themes/brownie/common/votebox.php:224 themes/ubuntu_brainstorm/common/votebox.php:224
+msgid "Won't Implement"
+msgstr "Kommer ej att genomföras."
+
+#: themes/brownie/common/votebox.php:230 themes/ubuntu_brainstorm/common/votebox.php:230
+msgid "Deleted idea"
+msgstr "Borttagen idé"
+
+#: themes/brownie/common/votebox.php:236 themes/ubuntu_brainstorm/common/votebox.php:236
+msgid "Invalid idea"
+msgstr "Ej giltig idé"
+
+#: themes/brownie/common/votebox.php:242 themes/ubuntu_brainstorm/common/votebox.php:242
+msgid "Voting is not allowed in the idea sandbox"
+msgstr "Röstning tillåts ej i idé-sandlådan"
+
+#: themes/brownie/duplicate_reportlist/default.php:71 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:71
+msgid "Process the duplicate reports"
+msgstr "Behandla dubblettrapporter"
+
+#: themes/brownie/duplicate_reportlist/default.php:94 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:94
+msgid "PLEASE BE CAREFUL:"
+msgstr "VAR FÖRSIKTIG"
+
+#: themes/brownie/duplicate_reportlist/default.php:96 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:96
+msgid ""
+"Mark an idea as duplicate only if the rationale is identical or *almost* "
+"identical."
+msgstr ""
+"Markera en idé som dubblett endast om bakgrundsbeskrivningen är identisk "
+"eller snarlik"
+
+#: themes/brownie/duplicate_reportlist/default.php:97 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:97
+msgid ""
+"When marking as duplicate, the solutions of the duplicate idea won't be "
+"linked to the master idea. If you find an interesting solution in the "
+"duplicate idea, link it first to the master idea."
+msgstr ""
+"När du markerar som dubblett kommer inte lösningarna från dubbletten att "
+"länkas till huvudidén. Hittar du en intressant lösning i dubbletten, så "
+"länka den först till huvudidén."
+
+#: themes/brownie/duplicate_reportlist/default.php:98 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:98
+msgid ""
+"Before marking as duplicate, if you find a popular solution in the duplicate "
+"idea, but which is a duplicate of a solution in the master idea, please mark "
+"the solution as duplicate of the corresponding solution. That way, the votes "
+"will be merged."
+msgstr ""
+"Om du hittar en poppulär lösning i en dubblett, var snäll och markera "
+"lösningen som en dubblett av den motsvarande lösningen innan du markerar "
+"idén som en dubblett. På detta sätt kommer rösterna att slås samman."
+
+#: themes/brownie/duplicate_reportlist/default.php:99 themes/ubuntu_brainstorm/duplicate_reportlist/default.php:99
+msgid ""
+"While processing duplicates with AJAX, the data coherence is not assured. As "
+"such, if some actions do not answer, it is likely they are no more valid. "
+"You can reload the page to fix that."
+msgstr ""
+"När dubbletter behandlas med AJAX är datasammanhanget ej garanterat. Om "
+"vissa åtgjärder ej svarar kan det bero på att de ej längre är giltiga. Du "
+"kan ladda om sidan för att lösa detta problem."
+
+#: themes/brownie/duplicate_reportlist/default_item.php:70;74 themes/ubuntu_brainstorm/duplicate_reportlist/default_item.php:70;74
+msgid "submitted the !date"
+msgstr "Skickad den !date"
+
+#: themes/brownie/duplicate_reportlist/default_item.php:151 themes/ubuntu_brainstorm/duplicate_reportlist/default_item.php:151
+msgid "Discard report"
+msgstr "Kasta rapport"
+
+#: themes/brownie/duplicate_reportlist/default_item.php:155 themes/ubuntu_brainstorm/duplicate_reportlist/default_item.php:155
+msgid "By <a href=\"!link\" class=\"authorlink\">!name</a> the !date"
+msgstr "Genom <a href=\"!link\" class=\"authorlink\">!name</a> den !date"
+
+#: themes/brownie/duplicate_reportlist/default_item_solution.php:25 themes/ubuntu_brainstorm/duplicate_reportlist/default_item_solution.php:25
+msgid "Solution #!number: !title (!nbvotes votes)"
+msgstr "Lösning #!number: !title (!nbvotes röster)"
+
+#: themes/brownie/duplicate_reportlist/default_item_solution.php:40 themes/ubuntu_brainstorm/duplicate_reportlist/default_item_solution.php:40
+msgid "Link to the other idea"
+msgstr "Länk till den andra idén"
+
+#: themes/brownie/duplicate_reportlist/default_item_solution.php:44 themes/ubuntu_brainstorm/duplicate_reportlist/default_item_solution.php:44
+msgid "Mark as dup of the other idea's solution #!number"
+msgstr "Markera som dubblett av den andra idéns lösning."
+
+#: themes/brownie/menublock/default.php:62 themes/ubuntu_brainstorm/menublock/default.php:62
+msgid "Filter in use"
+msgstr "Ett filter används"
+
+#: themes/brownie/menublock/default.php:126 themes/ubuntu_brainstorm/menublock/default.php:126
+msgid "Keywords"
+msgstr "Nyckelord"
+
+#: themes/brownie/menublock/default.php:147 themes/ubuntu_brainstorm/menublock/default.php:147
+msgid "Advanced search"
+msgstr "Avancerad sökning"
+
+#: themes/brownie/menublock/default.php:186 themes/ubuntu_brainstorm/menublock/default.php:186
+msgid "Search"
+msgstr "Sök"
+
+#: themes/brownie/menublock/default.php:256 themes/ubuntu_brainstorm/menublock/default.php:256
+msgid "Submit your idea"
+msgstr "Skicka din idé"
+
+#: themes/brownie/reportlist/process_reportlist.php:62 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:62
+msgid "Delete idea"
+msgstr "Borttagen idé"
+
+#: themes/brownie/reportlist/process_reportlist.php:63;71 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:63;71
+msgid "Delete comment"
+msgstr "Radera kommentar"
+
+#: themes/brownie/reportlist/process_reportlist.php:64;102 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:64;102
+msgid "Delete solution"
+msgstr "Radera lösning"
+
+#: themes/brownie/reportlist/process_reportlist.php:78 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:78
+msgid "Mark as being in development"
+msgstr "Markera som under utveckling"
+
+#: themes/brownie/reportlist/process_reportlist.php:85 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:85
+msgid "Mark as implemented"
+msgstr "Markera som genomförd"
+
+#: themes/brownie/reportlist/process_reportlist.php:101 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:101
+msgid "Mark as &quot;not an idea&quot;"
+msgstr "Markera som &quot;Inte en idé&quot;"
+
+#: themes/brownie/reportlist/process_reportlist.php:172 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:172
+msgid "No reports... yet!"
+msgstr "Inga rapporter... än!"
+
+#: themes/brownie/reportlist/process_reportlist.php:199 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:199
+msgid "A solution of <a href=\"!link\">Idea #!number: !title</a>"
+msgstr "En lösning till <a href=\"!link\">Idé #!number: !title</a>"
+
+#: themes/brownie/reportlist/process_reportlist.php:217;280;338 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:217;280;338
+msgid "reports"
+msgstr "rapporter"
+
+#: themes/brownie/reportlist/process_reportlist.php:263 themes/ubuntu_brainstorm/reportlist/process_reportlist.php:263
+msgid "A comment of <a href=\"!link\">Idea #!number: !title</a>"
+msgstr "En kommentar till <a href=\"!link\">Idé #!number: !title</a>"
+
+#: themes/brownie/user/default.php:221 themes/ubuntu_brainstorm/user/default.php:221
+msgid "How others users rated my solutions"
+msgstr "Hur andra användare röstade på mina idéer"
+
+#: themes/brownie/user/default.php:223 themes/ubuntu_brainstorm/user/default.php:223
+msgid "How others users rated !name's solutions"
+msgstr "hur andra användare röstade på !name's lösningar"
+
+#: themes/brownie/user/default.php:246 themes/ubuntu_brainstorm/user/default.php:246
+msgid "My global stats"
+msgstr "Min globala statestik"
+
+#: themes/brownie/user/default.php:248 themes/ubuntu_brainstorm/user/default.php:248
+msgid "!name's global stats"
+msgstr "!name's globala statestik"
+
+#: themes/brownie/user/default.php:257 themes/ubuntu_brainstorm/user/default.php:257
+msgid "No solution contribution yet."
+msgstr "Ingen lösning föreslagen än"
+
+#: themes/brownie/user/default.php:263 themes/ubuntu_brainstorm/user/default.php:263
+msgid "<b>THE</b> best solution contributor"
+msgstr "<b>DEN</b> bästa lösningsgivaren"
+
+#: themes/brownie/user/default.php:266 themes/ubuntu_brainstorm/user/default.php:266
+msgid "<b>!rankth</b> best solution contributor"
+msgstr "<b>!rankth</b> bästa lösningsgivaren."
+
+#: themes/brownie/user/default.php:271 themes/ubuntu_brainstorm/user/default.php:271
+msgid " (overall score of your solutions: <b>!solscore</b>)"
+msgstr " (genomsnittsbetyg på dina lösningar: <b>!solscore</b>)"
+
+#: themes/brownie/user/default.php:274 themes/ubuntu_brainstorm/user/default.php:274
+msgid " (overall score of his solutions: <b>!solscore</b>)"
+msgstr " (genomsnittsbetyg på hans/hennes lösningar: <b>!solscore</b>)"
+
+#: themes/brownie/user/default.php:283 themes/ubuntu_brainstorm/user/default.php:283
+msgid "!voteup !imgvoteup and !votedown !imgvotedown votes cast"
+msgstr "!voteup !imgvoteup och !votedown !imgvotedown röster"
+
+#: themes/brownie/user/default.php:294 themes/ubuntu_brainstorm/user/default.php:294
+msgid "!nbcomments comments"
+msgstr "!nbcomments kommentarer"
+
+#: themes/brownie/user/default.php:308 themes/ubuntu_brainstorm/user/default.php:308
+msgid "Admin tools"
+msgstr "Administratörsverktyg"
+
+#: themes/brownie/user/default.php:312 themes/ubuntu_brainstorm/user/default.php:312
+msgid "Delete ALL his/her ideas"
+msgstr "Ta bort ALLA hans/hennes idéer."
+
+#: themes/brownie/user/default.php:315 themes/ubuntu_brainstorm/user/default.php:315
+msgid "Delete ALL his/her solutions"
+msgstr "Ta bort ALLA hans/hennes lösningar."
+
+#: themes/brownie/user/default.php:318 themes/ubuntu_brainstorm/user/default.php:318
+msgid "Delete ALL his/her comments"
+msgstr "Ta bort ALLA hans/hennes kommentarer"
+
+#: themes/brownie/user/default.php:328;331 themes/ubuntu_brainstorm/user/default.php:328;331
+msgid "Contact !name"
+msgstr "Kontakta !name"
+
+#: themes/brownie/user/default.php:335 themes/ubuntu_brainstorm/user/default.php:335
+msgid ""
+"Write a message to !name. Your email address will be attached so that he can "
+"directly reply to you."
+msgstr ""
+"Skriv ett meddelande till !name. Din e-postaddress kommer att bifogas så att "
+"han/hon kan svara direkt till dig."
+
+#: themes/brownie/user/default.php:348 themes/ubuntu_brainstorm/user/default.php:348
+msgid "My preferences"
+msgstr "Mina preferenser"
+
+#: themes/brownie/user/default.php:353 themes/ubuntu_brainstorm/user/default.php:353
+msgid "Nobody can send me private messages."
+msgstr "Ingen kan sända mig privata meddelanden."
+
+#: themes/brownie/user/default.php:353 themes/ubuntu_brainstorm/user/default.php:353
+msgid "Allow"
+msgstr "Tillåt"
+
+#: themes/brownie/user/default.php:356 themes/ubuntu_brainstorm/user/default.php:356
+msgid "Any registered user can send me a private message"
+msgstr "Alla registrerade användare kan skicka mig privata meddelanden."
+
+#: themes/brownie/user/default.php:356 themes/ubuntu_brainstorm/user/default.php:356
+msgid "Forbid"
+msgstr "Förbjud"
+
+#: themes/brownie/user/userlog.php:96 themes/ubuntu_brainstorm/user/userlog.php:96
+msgid "My activity log"
+msgstr "min aktivitetslogg."
+
+#: themes/brownie/user/userlog.php:100 themes/ubuntu_brainstorm/user/userlog.php:100
+msgid "Contributor !name activity log"
+msgstr "Användare"
+
+#: themes/ubuntu_brainstorm/theme.php:64
+msgid "Attach Ubuntu-specific attachments"
+msgstr "Bifoga Ubuntu-specifika bilagor."
+
+#: themes/ubuntu_brainstorm/theme.php:65
+msgid ""
+"Allow or not users to attach Launchpad blueprints and Ubuntuforums.org "
+"thread."
+msgstr ""
+"Tillåt användare att bifoga Launchpad blueprints och trådar på "
+"Ubuntuforums.org."
+
+#: themes/ubuntu_brainstorm/choice/edit.php:167
+msgid ""
+"First time you submit an idea? Check the <a href=\"!link\" "
+"target=\"_blank\">posting guidelines</a>!"
+msgstr ""
+"Första gången du skickar en idé? Kolla in <a href=\"!link\" "
+"target=\"_blank\">riktlinjerna</a>!"
+
+#: themes/ubuntu_brainstorm/choicelist/ideas_in_preparation.php:78
+msgid "!bopen Learn !linkopen why!linkclose!bclose."
+msgstr "!bopen Lär dig !linkopen varför!linkclose!bclose."
+
+#: themes/ubuntu_brainstorm/choicelist/popular_ideas.php:79
+msgid ""
+"!bopen New to Brainstorm? !bclose Learn !linkopen how it works!linkclose!"
+msgstr ""
+"!bopen Ny på Brainstorm? !bclose Lär dig !linkopen hur det "
+"fungerar!linkclose!"
+
+#: themes/ubuntu_brainstorm/common/ideastatusbar.php:57;64;137;144
+msgid "(<a href=\"!link\">What is a blueprint?</a>)"
+msgstr "(<a href=\"!link\">Vad är en blueprint?</a>)"
+
+#: themes/ubuntu_brainstorm/common/ideastatusbar.php:154;160
+msgid ""
+"If this is a bug report, please use <a href=\"!link\">the Ubuntu bug "
+"tracker</a>."
+msgstr ""
+"Om detta är en felrapport, vänligen använd<a href=\"!link\">Ubuntus "
+"felhanteringssystem</a>."
+
+#: views/choicelist.html.php:48
+msgid "Latest submitted ideas"
+msgstr "Senast skickade idéer"
+
+#: views/choicelist.html.php:55
+msgid "Latest in development ideas"
+msgstr "Senaste idéer under utveckling"
+
+#: views/choicelist.html.php:62
+msgid "Latest implemented ideas"
+msgstr "Senast genomförda idéer"
+
+#: views/choicelist.html.php:70
+msgid "Latest popular ideas"
+msgstr "Senaste poppulära idéer"
+
+#: views/view.functions.php:163
+msgid "Duplicate"
+msgstr "Dubblett"
+
+#: views/view.functions.php:173
+msgid "New"
+msgstr "Nytt"
+
+#: views/view.functions.php:201
+msgid "Not an idea"
+msgstr "Ej en idé"
+
+#: views/admin/default.php:82 views/admin/editcategory.php:82 views/admin/editrelease.php:83
+msgid "IdeaTorrent administration"
+msgstr "IdeaTorrent administration"
+
+#: views/admin/default.php:100 views/admin/editcategory.php:100 views/admin/editrelease.php:101
+msgid "Global options"
+msgstr "Globala inställningar"
+
+#: views/admin/default.php:101 views/admin/editcategory.php:101 views/admin/editrelease.php:102
+msgid "Selected theme options"
+msgstr "Inställningar för valt tema"
+
+#: views/admin/default.php:102 views/admin/editcategory.php:102 views/admin/editrelease.php:103
+msgid "Categories"
+msgstr "Kategorier"
+
+#: views/admin/default.php:104 views/admin/editcategory.php:104 views/admin/editrelease.php:105
+msgid "Releases"
+msgstr "Utgåvor"
+
+#: views/admin/default.php:122
+msgid "Default front page"
+msgstr "Standardframsida"
+
+#: views/admin/default.php:126
+msgid ""
+"The home page of IdeaTorrent displays content from this relative URL. If "
+"unsure, keep it blank."
+msgstr ""
+"IdeaTorrents hemsida visar innehåll från denna relativa URL. Om du är "
+"osäker, behåll den tom."
+
+#: views/admin/default.php:130
+msgid "IdeaTorrent theme"
+msgstr "Tema för IdeaTorrent"
+
+#: views/admin/default.php:138
+msgid "The theme engine to use to display IdeaTorrent."
+msgstr "temamotor för att visa IdeaTorrent"
+
+#: views/admin/default.php:142
+msgid "Number of idea per page"
+msgstr "Antal idéer per sida"
+
+#: views/admin/default.php:146
+msgid "The number of ideas to show per page."
+msgstr "Antalet idéer att visa per sida"
+
+#: views/admin/default.php:150
+msgid "Number of idea approvals needed"
+msgstr "Antal godkännanden av idén som behövs"
+
+#: views/admin/default.php:154
+msgid ""
+"The number of approval needed for a newly submitted idea to go to the "
+"\"popular ideas\" area. If 0, new ideas will skip the \"idea sandbox\" area."
+msgstr ""
+"Antal godkännanden som behövs för nyligen skickade idéer för att de skall "
+"flyttas till sektionen \"poppulära idéeer\". Om värdet är 0 kommer nya idéer "
+"att gå direkt till poppulära idéer."
+
+#: views/admin/default.php:197
+msgid ""
+"Idea global categories make it easier to browse amongst ideas. If categories "
+"are defined, the idea submission form will ask users to select a category."
+msgstr ""
+"Globala idékategorier gör det enkelt att bläddra bland idéer. Om kategorier "
+"är definierade kommer idéformuläret be användare att välja en kategori."
+
+#: views/admin/default.php:209 views/admin/editcategory.php:131
+msgid "Category URL name"
+msgstr "URL för kategori"
+
+#: views/admin/default.php:212;269
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: views/admin/default.php:224;284
+msgid "edit"
+msgstr "redigera"
+
+#: views/admin/default.php:237
+msgid "Add category"
+msgstr "Lägg till kategori"
+
+#: views/admin/default.php:249
+msgid ""
+"Here, you can set a list of release names. If such releases names are "
+"defined, users with the administrator or developer role will be able to set "
+"a target release for an idea."
+msgstr ""
+"Här kan du skapa en lista över namn på utgåvor. Om sådana namn är angivna "
+"kan administratörer eller utvecklare sätta en målutgåva för en idé."
+
+#: views/admin/default.php:251
+msgid ""
+"Note that users will only be able to browse by the \"advertized releases\" "
+"in the \"ideas in development\" and \"implemented ideas\" pages."
+msgstr ""
+"Notera att användare endast kommer att kunna välja mellan \"publicerade "
+"utgåvor\" i \"Idéer under utveckling\" och \"genomförda idéer\"."
+
+#: views/admin/default.php:260
+msgid "Release"
+msgstr "Utgåva"
+
+#: views/admin/default.php:263 views/admin/editrelease.php:132
+msgid "Release URL name"
+msgstr "URL för utgåva"
+
+#: views/admin/default.php:266
+msgid "Advertized release"
+msgstr "Publicerad utgåva"
+
+#: views/admin/default.php:300
+msgid "Add release"
+msgstr "Lägg till utgåva"
+
+#: views/admin/editcategory.php:117
+msgid "Edit category !name"
+msgstr "Ändra kategori !name"
+
+#: views/admin/editcategory.php:123
+msgid "Category name"
+msgstr "Kategorinamn"
+
+#: views/admin/editcategory.php:127
+msgid "The name of the category to display."
+msgstr "Namnet på kategorin att visa."
+
+#: views/admin/editcategory.php:135
+msgid ""
+"The name of the category to use in URLs (e.g. http://localhost/my_category/)."
+msgstr ""
+"Namnet på kategorin att använda i URL:er (T.ex. http://localhost/my_category/"
+
+#: views/admin/editcategory.php:139 views/admin/editrelease.php:148
+msgid "Ordering"
+msgstr "Ordning"
+
+#: views/admin/editcategory.php:147 views/admin/editrelease.php:156
+msgid ""
+"By default, entries are ordered alphabetically. You can override that by "
+"using this number (lowest first)."
+msgstr ""
+"Som standard ordnas inlägg alfabetiskt. Du kan ändra detta genom att använda "
+"detta nummer (lägst först)."
+
+#: views/admin/editrelease.php:118
+msgid "Edit release !name"
+msgstr "Ändra namn på utgåvan"
+
+#: views/admin/editrelease.php:124
+msgid "Release name"
+msgstr "Namn på utgåvan"
+
+#: views/admin/editrelease.php:128
+msgid "The name of the release to display."
+msgstr "Namnet på utgåvan att visa"
+
+#: views/admin/editrelease.php:136
+msgid ""
+"The name of the release to use in URLs (e.g. "
+"http://localhost/implemented_ideas/my_release/)."
+msgstr ""
+"Namnet på utgåvan att använda i URL:er (T.ex. "
+"http://localhost/implemented_ideas/my_release/)"
+
+#: views/admin/editrelease.php:140
+msgid "Release advertized"
+msgstr "Utgåvan publicerad"
+
+#: views/admin/editrelease.php:144
+msgid ""
+"Do we want to see that release in the tab menu of the main in "
+"development/implemented ideas pages?"
+msgstr ""
+"Vill vi visa den utgåvan i menyn i under utveckling/genomförda idéer?"

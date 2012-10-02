@@ -1,0 +1,61 @@
+<?php
+/*
+Copyright (C) 2007 Stephane Graber <stgraber@ubuntu.com>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+require_once "qawebsite.function.php";
+require_once "qawebsite.display.php";
+require_once "qawebsite.block.php";
+require_once "qawebsite.class.php";
+
+function qawebsite_perm() {
+	$perms=array();
+	$rlist=db_query("SELECT userrole, adminrole, moderatorrole, developerrole FROM qawebsite_site");
+	while ($item = db_fetch_object($rlist)) {
+		array_push($perms,$item->userrole);
+		array_push($perms,$item->adminrole);
+		if($item->moderatorrole != null)
+			array_push($perms,$item->moderatorrole);
+		if($item->developerrole != null)
+			array_push($perms,$item->developerrole);
+	}
+	array_push($perms,"Registered User");
+	return $perms;
+}
+
+function qawebsite_access($op, $node) {
+	return TRUE;
+}
+
+function qawebsite_menu() {
+	$items = array();
+
+	$items['qawebsite/profile'] = array( 
+		'title' => 'My profile', 
+		'page callback' => 'qawebsite_profile', 
+		'access arguments' => array('Registered User'), 
+		'type' => MENU_NORMAL_ITEM, 
+		'weight' => -9);
+
+	$items['qawebsite/error'] = array(
+		'page callback' => 'qawebsite_error', 
+		'access arguments' => array('access content'), 
+		'type' => MENU_CALLBACK);
+
+	return $items;
+}
+?>

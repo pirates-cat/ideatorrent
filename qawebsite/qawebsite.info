@@ -1,0 +1,5 @@
+name = QA-Website
+description = "Utility functions"
+package = Ubuntu
+version = r35
+core = 6.x

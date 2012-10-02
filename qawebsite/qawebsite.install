@@ -1,0 +1,95 @@
+<?php
+function qawebsite_install() {
+    $prefix="qawebsite";
+    switch ($GLOBALS['db_type']) {
+	case 'pgsql':
+    	    db_query("CREATE TABLE {".$prefix."_launchpad_bug} (
+				id serial,
+				originalbug integer NOT NULL,
+				bugnumber integer NOT NULL,
+				title character varying NOT NULL,
+				product character varying,
+				status character varying NOT NULL,
+				importance character varying NOT NULL,
+				assignee character varying,
+				mentoring smallint NOT NULL DEFAULT 0,
+				commentscount integer NOT NULL,
+				duplicatescount integer NOT NULL,
+				subscriberscount integer NOT NULL,
+				lastchange timestamp DEFAULT NULL,
+				PRIMARY KEY (id)
+    	    )");
+    	    db_query("CREATE TABLE {".$prefix."_launchpad_blueprint} (
+				id serial,
+				blueprinturl character varying NOT NULL,
+				title character varying NOT NULL,
+				product character varying NOT NULL,
+				priority character varying NOT NULL,
+				definition character varying NOT NULL,
+				implementation character varying NOT NULL,
+				assignee character varying,
+				mentoring smallint NOT NULL DEFAULT 0,
+				lastchange timestamp DEFAULT NULL,
+				PRIMARY KEY (id)
+    	    )");
+    	    db_query("CREATE TABLE {".$prefix."_user_setting} (
+				id serial,
+				siteid integer,
+				module character varying,
+				title character varying NOT NULL,
+				type character varying NOT NULL,
+				description character varying NOT NULL,
+				status smallint NOT NULL DEFAULT 1,
+				PRIMARY KEY (id)
+    	    )");
+    	    db_query("CREATE TABLE {".$prefix."_user_setting_info} (
+				id serial,
+				settingid integer NOT NULL,
+				userid integer NOT NULL,
+				value character varying NOT NULL,
+				PRIMARY KEY (id)
+    	    )");
+    	    db_query("CREATE TABLE {".$prefix."_site} (
+				id serial,
+				subdomain character varying NOT NULL,
+				title character varying NOT NULL,
+				logo character varying,
+				userrole character varying NOT NULL,
+				adminrole character varying NOT NULL,
+				moderatorrole varchar,
+				developerrole varchar,
+				PRIMARY KEY (id)
+    	    )");
+    	    db_query("CREATE TABLE {".$prefix."_site_module} (
+				id serial,
+				siteid integer NOT NULL,
+				path character varying NOT NULL,
+				logo character varying,
+				title character varying,
+				status smallint NOT NULL DEFAULT 1,
+				PRIMARY KEY (id)
+    	    )");
+    	    db_query("CREATE TABLE {".$prefix."_module_setting} (
+				id serial,
+				siteid integer,
+				module character varying,
+				option character varying NOT NULL,
+				value character varying NOT NULL,
+				PRIMARY KEY (id)
+    	    )");
+	break;
+    }
+}
+
+function qawebsite_uninstall() {
+    $prefix="qawebsite";
+    db_query('DROP TABLE {'.$prefix.'_launchpad_bug}');
+    db_query('DROP TABLE {'.$prefix.'_launchpad_blueprint}');
+    db_query('DROP TABLE {'.$prefix.'_user_setting}');
+    db_query('DROP TABLE {'.$prefix.'_user_setting_info}');
+    db_query('DROP TABLE {'.$prefix.'_site}');
+    db_query('DROP TABLE {'.$prefix.'_site_module}');
+    db_query('DROP TABLE {'.$prefix.'_module_setting}');
+}
+
+?>
